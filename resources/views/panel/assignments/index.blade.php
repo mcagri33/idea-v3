@@ -78,8 +78,8 @@
             <tbody>
               @foreach($assignments as $assignment)
                 <tr>
-                  <td>{{ $assignment->user->name }}</td>
-                  <td>{{ $assignment->category->name }}</td>
+                 <td>{{ optional($assignment->user)->name ?? '-' }}</td>
+                 <td>{{ optional($assignment->category)->name ?? '-' }}</td>
                   <td>{{ $assignment->title }}</td>
                   <td>{{ $assignment->description }}</td>
                   <td>
