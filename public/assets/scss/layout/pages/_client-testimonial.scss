@@ -1,0 +1,181 @@
+@use "../../utils" as *;
+
+/*----------------------------------------*/
+/*  10.4 client-testimonial
+/*----------------------------------------*/
+.client-testimonial {
+    
+    &__background {
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+    &__slider-wrapper {
+        .col-lg-7 {
+            @media #{$md, $sm, $xs} {
+                order: 1;
+            }
+        }
+        .col-lg-1 {
+            @media #{$md, $sm, $xs} {
+                order: 2;
+            }
+        }
+        .col-lg-4 {
+            @media #{$md, $sm, $xs} {
+                order: 3;
+            }
+        }
+    }
+    
+    &__content {
+        max-width: 540px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    &__slider-thubnail {
+        margin-left: -15px;
+        margin-right: -15px;
+        
+        &__item {
+            margin-left: 15px;
+            margin-right: 15px;
+            overflow: hidden;
+            @include  border-radius(14px);
+        }
+    }
+    
+    &__slider-nav {
+        padding-left: 20px;
+        margin-bottom: -7px;
+        margin-right: -20px;
+        margin-top: -7px;
+        
+        @media #{$md, $sm, $xs} {
+            padding-left: 0;
+            margin-left: -15px;
+            margin-right: -15px;
+            margin-top: 30px;
+            margin-bottom:30px;
+        }
+        @media #{$xs} {
+            margin-left: -7px;
+            margin-right: -7px;
+        }
+        
+        &__item {
+            margin-bottom: 7px;
+            margin-top: 7px;
+            width: 80px;
+            height: 80px;
+            background-size: var(--rr-common-white);
+            border: 3px solid var(--rr-common-white) !important;
+            @include border-radius(500px);
+            overflow: hidden;
+            
+            @media #{$md, $sm, $xs} {
+                margin-top: 0px;
+                margin-bottom: 0px;
+                width: auto;
+                height: auto;
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+            
+            @media #{$xs} {
+                margin-left: 7px;
+                margin-right: 7px;
+            }
+            
+            &.slick-active.slick-current {
+                border-color: var(--rr-theme-primary2) !important;
+            }
+            
+            img {
+                width: 100%;
+                height: 100%;
+                @include border-radius(500px);
+                overflow: hidden;
+                object-fit: cover;
+            }
+        }
+    }
+    
+    &__slider-content {
+        padding-left: 60px;
+        margin-left: -15px;
+        margin-right: -15px;
+        
+        @media #{$md, $sm, $xs} {
+            padding-left: 0;
+        }
+        
+        
+        &__item {
+            margin-left: 15px;
+            margin-right: 15px;
+            
+            &-header {
+                gap: 20px;
+                
+                .designation {
+                    
+                    h4 {
+                        margin-bottom: 6px;
+                    }
+                    
+                    span {
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 14px;
+                        line-height: 18px;
+                        text-transform: uppercase;
+                        color: var(--rr-heading-primary);
+                        opacity: 0.7;
+                    }
+                }
+                
+                .icon {
+                    img {
+                        width: auto;
+                    }
+                }
+            }
+            
+            &-body {
+                padding: 45px 50px 45px 40px;
+                @include border-radius(14px);
+                overflow: hidden;
+                background-color: var(--rr-common-white);
+                margin-bottom: 0;
+                
+                @media #{$sm, $xs} {
+                    padding: 30px 25px;
+                }
+                
+                p {
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 17px;
+                    line-height: 32px;
+                    color: var(--rr-heading-primary);
+                    opacity: 0.5;
+                    margin-bottom: 0;
+                    
+                    + p {
+                        margin-top: 20px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.our-testimonial {
+    &__testimonial-page {
+        .feedback__item {
+            border: 1px solid rgba(4, 18, 31, 0.08);
+        }
+    }
+}

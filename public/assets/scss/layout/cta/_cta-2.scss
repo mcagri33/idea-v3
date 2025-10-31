@@ -1,0 +1,103 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  7.1 cta
+/*----------------------------------------*/
+.cta-2 {
+    
+    &__area {
+        &.footer-up {
+            margin-bottom: -215px;
+        }
+    }
+    
+    &__background {
+        position: relative;
+        z-index: 2;
+        background: linear-gradient(180deg, #7341F1 0%, #5A2BD1 100%);
+    }
+    
+    &__shape {
+        top: 31px;
+        left: 520px;
+        z-index: -1;
+        position: absolute;
+        
+        @media #{$xxl} {
+            left: 415px;
+        }
+    }
+    
+    &__wrapper {
+        overflow:hidden;
+        position: relative;
+        z-index: 2;
+        padding: 89px 151px 98px;
+        @include border-radius(20px);
+        
+        @media #{$xl} {
+            padding: 70px 80px;
+        }
+        @media #{$lg, $md} {
+            padding: 50px 40px;
+        }
+        @media #{$sm, $xs} {
+            padding: 40px 30px;
+        }
+    }
+    
+    &__media {
+        right: 135px;
+        bottom: -336px;
+        z-index: -1;
+        position: absolute;
+        
+        @media #{$xxl} {
+            right: 50px;
+        }
+        @media #{$xl} {
+            right: 10px;
+            max-width: 510px;
+        }
+        @media #{$lg, $md, $sm, $xs} {
+            position: inherit;
+            bottom: inherit;
+            right: inherit;
+            max-width: 200px;
+        }
+        
+        img {
+            @media #{$lg, $md, $sm, $xs} {
+                margin-right: -40px;
+            }
+        }
+    }
+    
+    &__content {
+        max-width: 564px;
+        
+        @media #{$lg, $md, $sm, $xs} {
+            max-width:100%;
+            margin-bottom: 40px;
+        }
+        
+        .subtitle {
+            display: inline-block;
+            padding: 4.5px 15px;
+            background: rgba(255, 255, 255, 0.2);
+            @include border-radius(6px);
+            font-style: normal;
+            font-weight: 500;
+            font-size: 13px;
+            line-height: 17px;
+            text-transform: uppercase;
+            color: var(--rr-common-white);
+        }
+        
+        .rr-btn {
+            &__wrapper {
+                gap: 14px;
+            }
+        }
+    }
+}

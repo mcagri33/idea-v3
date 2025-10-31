@@ -1,0 +1,80 @@
+@use "../../utils" as *;
+
+/*----------------------------------------*/
+/* 10.1 404
+/*----------------------------------------*/
+.error {
+    
+    &__area {
+        .container {
+            position: relative;
+            z-index: 1;
+        }
+    }
+    
+    &__element-shape {
+        top: -70px;
+        left: 44px;
+        position: absolute;
+        z-index: -1;
+    }
+    
+    &__content {
+        h1 {
+            font-style: normal;
+            font-weight: 700;
+            font-size: 260px;
+            line-height: 176px;
+            text-align: center;
+            color: var(--rr-heading-primary);
+            
+            @media #{$sm, $xs} {
+                font-size: 160px;
+                line-height:76px;
+            }
+            
+            @media (max-width: 350px) {
+                font-size: 130px;
+                line-height: 71px;
+            }
+        }
+        
+        &-media {
+            margin-top: -113px;
+            position: relative;
+            z-index: -1;
+            max-width: 736px;
+            margin-left: auto;
+            margin-right: auto;
+            
+            @media #{$sm, $xs} {
+                margin-top: -65px;
+            }
+        }
+        
+        h3 {
+            font-style: normal;
+            font-weight: 700;
+            font-size: 34px;
+            line-height: 44px;
+        }
+        
+        p {
+            font-family: var(--rr-ff-roboto);
+            font-style: normal;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 28px;
+            text-align: center;
+            color: #031A26;
+            opacity: 0.6;
+        }
+        
+        .rr-btn__theme-4 {
+            padding: 15px 48.5px;
+            span {
+                font-weight: 500;
+            }
+        }
+    }
+}

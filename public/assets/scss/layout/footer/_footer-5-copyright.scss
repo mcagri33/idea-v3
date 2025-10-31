@@ -1,0 +1,67 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  6.3 footer-copyright
+/*----------------------------------------*/
+// Footer bottom style
+.footer-5 {
+
+    &__bottom-wrapper {
+        padding: 21px 24px;
+        background: rgba(255, 255, 255, 0.08);
+        position: relative;
+        margin-top:  100px;
+
+        @media #{$md, $md} {
+           margin-top: 80px;
+        }
+        @media #{$sm} {
+           margin-top:  60px;
+        }
+        @media #{$xs} {
+           margin-top:  40px;
+        }
+    }
+
+    &__bottom {
+        gap: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        @media #{$xs, $sm} {
+            flex-wrap: wrap;
+            text-align: center;
+            justify-content: center;
+        }
+    }
+}
+
+// Footer copyright style
+.footer-5__copyright {
+	p {
+		color: #9DA8B3;
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 0;
+		
+		a {
+			&:hover {
+				color: var(--rr-common-white);
+			}
+		}
+	}
+
+    &-payment {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 8px;
+        a {
+            padding: 3px 7px;
+            border-radius: 4px;
+            display: inline-block;
+            background: var(--rr-common-white);
+        }
+    }
+}

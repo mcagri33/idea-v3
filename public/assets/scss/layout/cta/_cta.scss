@@ -1,0 +1,106 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  7.1 cta
+/*----------------------------------------*/
+.cta {
+    &__wrapper {
+        overflow:hidden;
+        position: relative;
+        z-index: 1;
+        padding: 90px 151px;
+        box-shadow: 20px 20px 0px rgba(255, 255, 255, 0.14);
+        
+        @media #{$xl} {
+            padding: 80px 85px;
+        }
+        @media #{$lg} {
+            padding: 80px 85px;
+        }
+        @media #{$md, $sm} {
+            padding: 40px 30px;
+        }
+        @media #{$xs} {
+            padding: 40px 20px;
+        }
+    }
+    
+    &__content {
+        max-width:362px;
+        
+        h2 {
+            font-size: 40px;
+            line-height: 55px;
+            
+            @media #{$lg, $md, $sm} {
+                font-size: 38px;
+                line-height:50px;
+            }
+            @media #{$xs} {
+                font-size: 30px;
+                line-height: 42px;
+            }
+            @media #{$xxs} {
+                font-size: 27px;
+                line-height: 37px;
+            }
+        }
+        
+        .rr-btn.rr-btn__theme-1 {
+            border-color: var(--rr-common-white);
+            
+            &:after {
+                background-color: var(--rr-heading-primary);
+            }
+            
+            &:hover {
+                border-color: var(--rr-heading-primary);
+            }
+            
+            &:before {
+                background-color: var(--rr-common-white);
+            }
+        }
+    }
+    
+    &__media {
+        top: -144px;
+        position:absolute;
+        right: -279px;
+        
+        @media #{$lg} {
+            right: -356px;
+        }
+        
+        @media #{$md, $sm, $xs} {
+            position: inherit;
+            right: inherit;
+            top: inherit;
+            margin-top: 0;
+            max-width: 500px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        
+        img {
+            mask-image: url(../../assets/imgs/cta/cta_shape.svg);
+            mask-mode: alpha;
+            mask-size: 670px;
+            mask-repeat: no-repeat;
+            mask-position: 233px 168px;
+            
+            @media #{$lg, $md, $sm, $xs} {
+                mask-size: 455px;
+                mask-position: 363px 209px;
+            }
+            
+            @media #{$md, $sm, $xs} {
+                mask-image: none;
+            }
+        }
+    }
+}
+
+.cta__footer-up {
+    margin-bottom: -215px;
+}

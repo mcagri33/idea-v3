@@ -1,0 +1,160 @@
+@use "../../utils" as *;
+
+/*----------------------------------------*/
+/* 10.1 team details
+/*----------------------------------------*/
+.team-details {
+    
+    &__info {
+        background: var(--rr-common-white);
+        border: 1px solid rgba(4, 18, 31, 0.14);
+        @include border-radius(10px);
+        
+        &-media {
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            @include border-radius(10px);
+            
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        
+        &-social {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            
+            a {
+                width: 40px;
+                height: 40px;
+                background: var(--rr-common-white);
+                @include border-radius(6px);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                
+                &:hover {
+                    background: var(--rr-theme-primary2);
+                    
+                    svg path[fill="#010915"] {
+                        fill: var(--rr-common-white);
+                        fill-opacity: 1;
+                    }
+                }
+            }
+        }
+        
+        &-list {
+            padding: 34px 34px 43px;
+            margin: 0;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 13px;
+            
+            @media #{$lg, $md, $sm, $xs} {
+                padding: 25px;
+            }
+            
+            
+            li {
+                font-style: normal;
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 18px;
+                color: #888899;
+                
+                span {
+                    text-transform: uppercase;
+                    color: #050505;
+                    margin-right: 7px;
+                }
+                
+                a {
+                    &:hover {
+                        color: var(--rr-theme-primary2)
+                    }
+                }
+            }
+        }
+    }
+    
+    &__content {
+        padding-left: 61px;
+        
+        @media #{$lg, $md, $sm, $xs} {
+            padding-left:0;
+        }
+        
+        .name {
+            font-size: 34px;
+            line-height: 43px;
+            
+            @media #{$xs} {
+                font-size: 30px;
+                line-height: 42px;
+            }
+            @media #{$xxs} {
+                font-size: 22px;
+                line-height: 32px;
+            }
+        }
+        
+        span {
+            font-style: normal;
+            font-weight: 500;
+            font-size: 15px;
+            line-height: 40px;
+            text-transform: uppercase;
+            color: #050505;
+            opacity: 0.7;
+        }
+        
+        p {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 28px;
+            color: rgba(1, 9, 21, 0.6);
+        }
+    }
+    
+    &-skill__progress-item {
+        .span-title {
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 18px;
+            text-transform: uppercase;
+            color: rgba(1, 9, 21, 0.7);
+        }
+        
+        .left-side {
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 18px;
+            text-transform: uppercase;
+            color: rgba(1, 9, 21, 0.7);
+        }
+        
+        .progress {
+            @include border-radius(4px);
+            height: 4px;
+            background: rgba(1, 9, 21, 0.08);
+            
+            .progress-bar {
+                background-color: var(--rr-theme-primary2);
+            }
+        }
+    }
+}

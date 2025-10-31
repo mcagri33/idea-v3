@@ -1,0 +1,120 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  8.1 case-studies
+/*----------------------------------------*/
+.what-we-do {
+    
+    &__slider-control {
+        gap: 10px;
+    }
+    
+    &__slider-arrow-next, &__slider-arrow-prev {
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(1, 9, 21, 0.06);
+        @extend %rr-transition-3;
+        
+        &:hover, &:focus {
+            background-color: var(--rr-theme-primary1);
+        }
+    }
+    
+    &__content {
+        gap: 10px 30px;
+    }
+    
+    &__item {
+        padding: 82px 40px 94px;
+        
+        &-custom {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            @media #{$sm, $xs} {
+                height: auto;
+            }
+            
+            a {
+                font-style: normal;
+                font-weight: 500;
+                font-size: 18px;
+                line-height: 23px;
+                text-align: center;
+                text-decoration-line: underline;
+                text-transform: uppercase;
+                color: var(--rr-heading-primary);
+                @extend %rr-transition-3;
+                
+                &:hover {
+                    color: var(--rr-common-white) !important;
+                }
+            }
+        }
+        
+        @media #{$sm, $xs} {
+            padding: 60px 25px;
+        }
+        
+        &-icon {
+            img {
+                width: auto;
+            }
+        }
+        
+        h4 {
+            text-transform: uppercase;
+        }
+        
+        p {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 26px;
+        }
+        
+        a {
+            font-style: normal;
+            font-weight: 500;
+            font-size: 15px;
+            line-height: 20px;
+            color: var(--rr-heading-primary);
+            
+            &:hover {
+                color: var(--rr-theme-primary1);
+                
+                svg path[fill="#010915"]{
+                    fill: var(--rr-theme-primary1);
+                }
+            }
+            
+            svg {
+                margin-left: 3px;
+            }
+        }
+    }
+    
+    &__scrollbar {
+        margin-top:40px;
+        width: 100%;
+        height: 1px;
+        opacity: 1 !important;
+        background: rgba(1, 9, 21, 0.06);
+        
+        .swiper-scrollbar-drag {
+            height: 100%;
+            background: var(--rr-heading-primary);
+        }
+    }
+}
+
+.what-we-do__active {
+    .swiper-wrapper {
+        height: 100%;
+    }
+}

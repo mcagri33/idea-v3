@@ -1,0 +1,221 @@
+@use '../../utils' as *;
+
+
+
+.our-partners-5__item__logo img {
+    width: inherit;
+}
+
+.our-partners-5__wrapper {
+    min-height: 618px;
+    position: relative;
+}
+
+.our-partners-5__item__logo__center {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 250px;
+    height: 250px;
+
+    @media #{$sm} {
+        width: 200px;
+        height: 200px;
+    }
+
+    @media #{$xs} {
+        width: 150px;
+        height: 150px;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.our-partners-5__item {
+    position: absolute;
+
+    &__logo {
+        width: 80px;
+        height: 80px;
+
+        @media #{$sm} {
+            width: 70px;
+            height: 70px;
+
+        }
+
+        @media #{$xs} {
+            width: 50px;
+            height: 50px;
+
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &.item {
+        &-1 {
+            top: 119px;
+            left: 0;
+        }
+
+        &-2 {
+            left: 0;
+            bottom: 133px;
+        }
+
+        &-3 {
+            left: 165px;
+            bottom: 235px;
+
+            @media #{$md} {
+                left: 140px;
+            }
+
+            @media #{$sm} {
+                left: 70px;
+                bottom: 250px;
+            }
+
+            @media #{$xs} {
+                left: 30px;
+                bottom: 265px;
+            }
+        }
+
+        &-4 {
+            top: 145px;
+            left: 330px;
+
+            @media #{$md} {
+                top: 80px;
+                left: 200px;
+            }
+
+            @media #{$sm} {
+                top: 90px;
+                left: 290px;
+            }
+
+            @media #{$xs} {
+                top: 70px;
+                left: 120px;
+            }
+        }
+
+        &-5 {
+            bottom: 52px;
+            left: 330px;
+
+            @media #{$md} {
+                left: 200px;
+            }
+
+            @media #{$sm} {
+                left: 290px;
+            }
+
+            @media #{$xs} {
+                left: 122px;
+            }
+        }
+
+        &-6 {
+            top: 145px;
+            right: 330px;
+
+            @media #{$md} {
+                top: 80px;
+                right: 200px;
+            }
+
+            @media #{$sm} {
+                top: 90px;
+                right: 290px;
+            }
+
+            @media #{$xs} {
+                top: 150px;
+                right: 120px;
+            }
+        }
+
+        &-7 {
+            bottom: 52px;
+            right: 330px;
+
+            @media #{$md} {
+                right: 200px;
+            }
+
+            @media #{$sm} {
+                right: 290px;
+            }
+
+            @media #{$xs} {
+                bottom: 150px;
+                right: 120px;
+            }
+        }
+
+        &-8 {
+            right: 165px;
+            bottom: 235px;
+
+            @media #{$md} {
+                right: 140px;
+            }
+
+            @media #{$sm} {
+                right: 70px;
+                bottom: 250px;
+            }
+
+            @media #{$xs} {
+                right: 30px;
+                bottom: 265px;
+            }
+        }
+
+        &-9 {
+            top: 119px;
+            right: 0;
+        }
+
+        &-10 {
+            bottom: 133px;
+            right: 0;
+        }
+    }
+
+}
+
+.our-partners-5__bg__shape {
+    left: 60px;
+    bottom: 220px;
+    height: 94.75px;
+    width: 1163.68px;
+    position: absolute;
+    filter: blur(200px);
+    background: rgba(95, 252, 40, 0.3);
+    transform: matrix(0.94, 0.34, -0.34, 0.94, 0, 0);
+
+    &__2 {
+        left: 60px;
+        bottom: 180px;
+        height: 106.58px;
+        background: rgba(0, 163, 255, 0.2);
+        transform: matrix(0.94, -0.34, 0.34, 0.94, 0, 0);
+    }
+}

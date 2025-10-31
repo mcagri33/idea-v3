@@ -1,0 +1,93 @@
+
+@use '../utils' as *;
+
+/*---------------------------------
+	1.8 spacing
+---------------------------------*/
+.section-space {
+	padding-top: 120px;
+	padding-bottom: 120px;
+	@media #{$md} {
+		padding-top: 80px;
+		padding-bottom: 80px;
+	}
+	@media #{$sm,$xs} {
+		padding-top: 70px;
+		padding-bottom: 70px;
+	}
+}
+
+.section-space__features {
+	padding-top: 150px;
+	padding-bottom: 126px;
+	@media #{$lg, $md} {
+		padding-top: 80px;
+		padding-bottom: 80px;
+	}
+	@media #{$sm,$xs} {
+		padding-top: 70px;
+		padding-bottom: 70px;
+	}
+}
+
+.section-space__faq {
+	padding-top: 130px;
+	padding-bottom: 221px;
+	@media #{$lg, $md} {
+		padding-top: 80px;
+		padding-bottom: 80px;
+	}
+	@media #{$sm,$xs} {
+		padding-top: 70px;
+		padding-bottom: 70px;
+	}
+}
+
+.section-space-top {
+	padding-top: 120px;
+	@media #{$md} {
+		padding-top: 80px;
+	}
+	@media #{$sm,$xs} {
+		padding-top: 70px;
+	}
+}
+.section-space-bottom {
+	padding-bottom: 120px;
+	@media #{$md} {
+		padding-bottom: 80px;
+	}
+	@media #{$sm,$xs} {
+		padding-bottom: 70px;
+	}
+}
+
+.section__title-space { margin-bottom: 50px; }
+
+
+//  mb-minus-30/40
+.mb-minus-30 { margin-bottom: -30px;}
+.mb-minus-40 {margin-bottom: -40px;}
+.mb-minus-60 {margin-bottom: -60px;}
+
+// brand space
+.section-space__brand  {
+	padding: 70px 0;
+	border-bottom: 1px solid rgba(1, 9, 21, 0.1);
+	border-top: 1px solid rgba(1, 9, 21, 0.1);
+}
+
+.section-space__customer-feedback {
+	padding-bottom: 150px;
+	@media #{$md} {
+		padding-bottom: 105px;
+	}
+	@media #{$sm,$xs} {
+		padding-bottom: 95px;
+	}
+}
+
+// brand space
+.section-space__contact  {
+	padding-top: 45px;
+}

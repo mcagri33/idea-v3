@@ -1,0 +1,144 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  3.1 header-common
+/*----------------------------------------*/
+.header-6 {
+	
+	&.header__area {
+		background-color: transparent;
+		box-shadow: none;
+		position: fixed;
+		width: 100%;
+		top: 27px;
+		z-index: 99;
+		@media #{$xs} {
+			top: 0;
+		}
+	}
+	.header {
+		
+		&__logo {
+			@media #{$xs} {
+				max-width: 110px;
+			}
+		}
+		
+		&__hamburger {
+			.bar-icon {
+				span {
+					background-color: var(--rr-common-white);
+				}
+			}
+		}
+
+		&__btn-wrap {
+			gap: 24px;
+		}
+		
+		&__action {
+			gap: 20px;
+
+			.rr-btn__login {
+				font-size: 16px;
+				color: var(--rr-common-white);
+				font-weight: var(--rr-fw-sbold);
+				display: flex;
+				align-items: center;
+				gap: 6px;
+				
+				&:hover {
+					color: var(--rr-theme-primary);
+
+					svg  [stroke="white"]{
+						stroke:  var(--rr-theme-primary);
+					}
+				}
+			}
+
+			.btn {
+				background-image: linear-gradient(to right, #F9CF01 0%, #62F901 100%);
+				border-radius: 6px;
+			  	box-sizing: border-box;
+				color: #00a84f;
+				display: block;
+				height: 44px;
+				letter-spacing: 1px;
+				margin: 0 auto;
+				padding: 1px;
+				position: relative;
+				text-decoration: none;
+				text-transform: uppercase;
+				width: 111px;
+				z-index: 2;
+			}
+			
+			.btn:hover {
+				color: #fff;
+			}
+			
+			.btn span {
+				align-items: center;
+				background: #091124;
+				border-radius: 6px;
+				display: flex;
+				justify-content: center;
+				height: 100%;
+				transition: background .5s ease;
+				width: 100%;
+
+				color: var(--rr-common-white);
+				font-family: var(--rr-ff-urbanist);
+				font-size: 16px;
+				font-weight: 700;
+				text-transform: capitalize;
+				line-height: normal;
+			}
+			
+			.btn:hover span {
+				background: transparent;
+			}
+		}
+	}
+}
+
+.header-6 {
+
+    .mean {
+        &__menu-wrapper {
+            border-radius: 6px;
+            border: 1.5px solid rgba(255, 255, 255, 0.10);
+            background: rgba(2, 2, 3, 0.40);
+            box-shadow: 0px 10px 60px 0px rgba(3, 6, 17, 0.20);
+            backdrop-filter: blur(5px);
+            padding: 0 60px;
+        }
+    }
+	
+	&__main {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		
+		@media #{$xs, $sm, $md} {
+			padding: 5.5px 15px;
+		}
+		
+		.main-menu {
+			
+			ul {
+				
+				li {
+					@media (max-width:1199px) {
+						
+						&:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)):not(:nth-child(4)):not(:nth-child(5)) {
+							display: none;
+						}
+					}
+				}
+			}
+		}
+	}
+
+}
+

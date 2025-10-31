@@ -1,0 +1,116 @@
+@use '../../utils' as *;
+
+.cta-3 {
+
+    &__area {
+        z-index: 9;
+        position: relative;
+        &.footer-up {
+            margin-bottom: -200px;
+        }
+    }
+
+    &__wrapper {
+        border-radius: 20px;
+        background: #356DF1;
+        padding-bottom: 45px;
+        overflow: hidden;
+
+    }
+
+    &__content {
+        padding-top: 75px;
+        padding-left: 153px;
+        padding-bottom: 40px;
+
+        @media #{$lg} {
+            padding-left: 100px;
+            padding-top: 60px;
+        }
+        @media #{$md} {
+            padding-left: 40px;
+            padding-top: 40px;
+        }
+        @media #{$sm, $xs} {
+            padding-left: 30px;
+            padding-top: 30px;
+            padding-right: 10px;
+        }
+
+        &-title {
+            @media #{$sm} {
+                font-size: 30px;
+            }
+        }
+    }
+
+    &__btn-box {
+        gap: 40px;
+        display: flex;
+        align-items: center;
+
+        @media #{$sm, $xs} {
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+
+        &-mack, &-windows {
+            gap: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .btn-yellow {
+            
+            &:before {
+                background: linear-gradient(168deg, #874EDD 55.45%, #F911F0 136.34%);
+            }
+        }
+    }
+
+    &__item {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        border-radius: 6px;
+        align-items: center;
+        justify-content: center;
+        background: var(--rr-common-white);
+        box-shadow: 0px 4px 13px 0px rgba(3, 6, 17, 0.20);
+
+        img {
+            width: 24px;
+        }
+    }
+}
+.carouselTicker {
+    margin: 0;
+    padding: 0;
+    rotate: -4deg;
+
+    &__list {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      list-style: none;
+      align-items: center;
+      display: -webkit-box;
+      justify-content: center;
+      gap: 10px;
+
+      li {
+        gap: 5px;
+        float: left;
+        display: flex;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: 600;
+        padding: 9px 25px;
+        border-radius: 6px;
+        align-items: center;
+        color: rgba(3, 6, 17, 0.70);
+        background: var(--rr-common-white);
+        box-shadow: 0px 4px 13px 0px rgba(3, 6, 17, 0.20);
+      }
+    }
+}

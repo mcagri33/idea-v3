@@ -1,0 +1,136 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  2.10 backtotop
+/*----------------------------------------*/
+
+.backtotop-wrap {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	opacity: 1;
+	visibility: hidden;
+	@include transform(translateY(10px));
+	@extend %rr-transition-3;
+	box-shadow: 0px 20px 60px rgb(1 9 21);
+	
+	i {
+		opacity: 0;
+		visibility: visible;
+		@extend %rr-transition-3;
+		@include transform(translateY(10px));
+	}
+	
+	&.active-backtotop {
+		opacity: 1;
+		visibility: visible;
+		@include transform(translatex(0));
+		
+		i {
+			visibility: visible;
+			@include transform(translateY(0px));
+			opacity:1;
+		}
+	}
+	
+	color: var(--rr-common-white);
+	font-family: var(--rr-ff-heading);
+	font-size: var(--rr-ff-body-2);
+	line-height: var(--rr-lh-body2);
+	font-style: normal;
+	font-weight: var(--rr-fw-medium);
+	display: inline-flex;
+	align-items: center;
+	cursor: pointer;
+	width: 46px;
+	height: 46px;
+	min-height: 46px;
+	min-width: 46px;
+	text-transform:capitalize;
+	justify-content: center;
+	@include border-radius(500px);
+	overflow: hidden;
+	background: var(--rr-theme-primary);
+	z-index: 999;
+	
+	&:before {
+		transition-duration: 800ms;
+		position: absolute;
+		width: 200%;
+		height: 200%;
+		content: "";
+		top: -200%;
+		left: 50%;
+		@include transform(translateX(-50%));
+		border-radius: 50%;
+		z-index: 1;
+		background: var(--rr-theme-primary1);
+	}
+	
+	&:after {
+		display: block;
+		clear: both;
+		content: "";
+	}
+	
+	.btn-wrap {
+		position: relative;
+		z-index: 1;
+		float: left;
+		overflow: hidden;
+		display: inline-block;
+		
+		.text-one {
+			position: relative;
+			display: block;
+			color: var(--black-color);
+			@extend %rr-transition-3;
+		}
+		
+		.text-two {
+			position: absolute;
+			top: 100%;
+			display: block;
+			color: var(--black-color);
+			@extend %rr-transition-3;
+		}
+	}
+	
+	&:hover {
+		color: var(--rr-common-white);
+		
+		&:before {
+			top: -40%;
+		}
+		
+		.text-one {
+			@include transform(translateY(-150%));
+		}
+		
+		.text-two {
+			top: 50%;
+			@include transform(translateY(-50%));
+		}
+	}
+}
+
+.body-2 {
+	.backtotop-wrap {
+		background: var(--rr-theme-primary1);
+		
+		&:before {
+			background: var(--rr-theme-primary);
+		}
+	}
+}
+.body-3 {
+	.backtotop-wrap {
+		background: var(--rr-theme-primary2);
+		
+		&:before {
+			background: var(--rr-section-3);
+		}
+	}
+}
+
+

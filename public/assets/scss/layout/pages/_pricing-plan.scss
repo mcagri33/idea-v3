@@ -1,0 +1,154 @@
+@use "../../utils" as *;
+
+/*----------------------------------------*/
+/*  10.4 pricing-plan
+/*----------------------------------------*/
+.pricing-plan {
+    
+    &__content {
+        max-width: 640px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    &__item {
+        @include border-radius(10px);
+        overflow: hidden;
+        border: 1px solid rgba(4, 18, 31, 0.08);
+        
+        
+        &-header {
+            padding: 20px 20px 51px 40px;
+            background-position: center;
+            overflow: hidden;
+            background-size: cover;
+            background-repeat: no-repeat;
+            @include border-radius(10px);
+            
+            @media #{$xxs} {
+                padding: 20px 15px;
+            }
+            
+            &-label {
+                margin-bottom: -8px;
+                margin-left: auto;
+                display: inline-block;
+                padding: 4px 10px;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 18px;
+                text-align: center;
+                @include border-radius(6px);
+                color: var(--rr-heading-primary);
+                background: var(--rr-common-white);
+                box-shadow: 0px 1px 2px rgba(3, 4, 28, 0.1);
+            }
+            
+            &-icon {
+                
+                img {
+                    width: auto;
+                }
+            }
+            
+            p {
+                font-style: normal;
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 18px;
+                text-transform: uppercase;
+                color: var(--rr-theme-primary3);
+            }
+            
+            h2 {
+                font-style: normal;
+                font-weight: 500;
+                font-size: 60px;
+                line-height: 78px;
+                letter-spacing: -0.04em;
+                color: var(--rr-heading-primary);
+                
+                @media #{$lg} {
+                    font-size: 38px;
+                    line-height:50px;
+                }
+                @media #{$md, $sm} {
+                    font-size: 34px;
+                    line-height:46px;
+                }
+                @media #{$xs} {
+                    font-size: 30px;
+                    line-height: 42px;
+                }
+                @media #{$xxs} {
+                    font-size: 22px;
+                    line-height: 32px;
+                }
+                
+                span {
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 21px;
+                    letter-spacing: -0.04em;
+                    margin-left: -13px;
+                    color: var(--rr-text-primary2);
+                    
+                    @media #{$lg, $md, $sm, $xs} {
+                        margin-left: -5px;
+                    }
+                }
+            }
+        }
+        
+        &-body {
+            padding: 40px;
+            padding-bottom: 30px;
+            
+            @media #{$xxs} {
+                padding: 20px 15px;
+            }
+            
+            p {
+                font-style: normal;
+                font-weight: 400;
+                font-size: 15px;
+                line-height: 20px;
+                color: var(--rr-text-primary3);
+            }
+            
+            a {
+                width: 100%;
+            }
+            
+            ul {
+                display: flex;
+                flex-direction: column;
+                gap: 18px;
+                padding: 0;
+                line-height:0;
+                list-style: none;
+                
+                @media #{$xxs} {
+                    gap: 13px;
+                }
+                
+                li {
+                    
+                    img {
+                        max-width: 20px;
+                        margin-right: 14px;
+                        width: auto;
+                    }
+                    
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 15px;
+                    line-height: 20px;
+                    color: var(--rr-text-primary3);
+                }
+            }
+        }
+    }
+}

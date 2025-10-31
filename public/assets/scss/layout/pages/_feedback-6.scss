@@ -1,0 +1,151 @@
+@use "../../utils" as *;
+
+
+.feedback-6 {
+    &__item {
+        background: rgba(3, 6, 17, 0.06);
+        border-radius: 14px;
+        padding: 80px 120px 75px 80px;
+
+        @media #{$xl} {
+            padding: 60px 80px 55px 60px;
+        }
+
+        @media #{$lg} {
+            padding: 50px 40px 50px 40px;
+        }
+
+        @media #{$sm} {
+            padding: 50px 70px 50px 50px;
+        }
+
+        @media #{$xs} {
+            padding: 40px 15px 40px 15px;
+        }
+    }
+
+    &__dec {
+        font-size: 20px;
+        font-weight: 500;
+        color: rgb(96, 102, 112);
+        line-height: 36px;
+        margin-top: 30px;
+        margin-bottom: 42px;
+        font-family: var(--rr-ff-urbanist);
+
+        span {
+            color: var(--rr-common-white);
+            background-color: rgb(5, 5, 5);
+        }
+    }
+
+    &__top {
+        &__wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            @media #{$xs} {
+                display: block;
+            }
+
+            & .section-7__title {
+                br {
+                    @media #{$xs} {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
+    &__author {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        &__thumb {
+            width: 70px;
+            height: 70px;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 500px;
+            }
+        }
+
+        &__wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        &__title {
+            font-size: 22px;
+            color: var(--rr-text-body2);
+            font-weight: 600;
+            margin-bottom: 7px;
+            font-family: var(--rr-ff-urbanist);
+
+            @media #{$xs} {
+                font-size: 20px;
+            }
+        }
+
+        &__position {
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--rr-text-body2);
+            opacity: .6;
+            font-family: var(--rr-ff-urbanist);
+
+            @media #{$xs} {
+                font-size: 15px;
+            }
+        }
+    }
+
+    &__button {
+        &__arrow {
+            width: 50px;
+            height: 50px;
+            border: 1px solid rgb(3 6 17 / 14%);
+            text-align: center;
+            line-height: 48px;
+            margin-left: 8px;
+            border-radius: 500px;
+            transition: .3s;
+
+            &:hover {
+                background-color: rgb(53, 109, 241);
+                border-color: rgb(53, 109, 241);
+
+                svg [stroke="#171718"] {
+                    stroke: var(--rr-common-white);
+                }
+            }
+        }
+    }
+
+    &__bg {
+        &__shape {
+            width: 450px;
+            height: 450px;
+            background-color: var(--rr-common-white);
+            border-radius: 500px;
+            position: absolute;
+            bottom: 13px;
+            left: -200px;
+            filter: blur(150px);
+            z-index: 2;
+
+            &__2 {
+                right: -200px;
+                left: auto;
+            }
+        }
+    }
+}

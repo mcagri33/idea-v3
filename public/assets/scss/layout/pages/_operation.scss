@@ -1,0 +1,90 @@
+@use "../../utils" as *;
+
+/*----------------------------------------*/
+/* 10.1 operation
+/*----------------------------------------*/
+
+.operation {
+
+    &__shape {
+        position: absolute;
+        top: -270px;
+        left: 0;
+        z-index: -1;
+    }
+
+    &__item {
+        z-index: 1;
+        padding: 34px;
+        overflow: hidden;
+        position: relative;
+        margin-bottom: 30px;
+        @include border-radius(10px);
+
+        @media #{$xs} {
+            padding: 30px 20px;
+        }
+        
+        &.item-1 {
+            background: #FFECEC;
+            border: 1px solid #F3BEE7;
+        }
+        &.item-2 {
+            background-color: #ECF7FF;
+            border: 1px solid #CBBEF3;
+        }
+        &.item-3 {
+            background-color: #E8FDF3;
+            border: 1px solid #A8D1CF;
+        }
+        
+        &__content {
+            padding-left: 16px;
+            padding-top: 24px;
+            padding-right: 16px;
+
+            @media #{$xs} {
+                padding-left: 0;
+                padding-top: 0;
+                padding-right: 0;
+            }
+
+            ul {
+                list-style: none;
+
+                li {
+                    gap: 8px;
+                    display: flex;
+                    font-size: 15px;
+                    margin-bottom: 15px;
+                    align-items: baseline;
+                    font-weight: var(--rr-fw-medium);
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+
+                    img {
+                        width: inherit;
+                    }
+                }
+            }
+        }
+
+        &__media {
+            overflow: hidden;
+            margin-top: 53px;
+            margin-left: auto;
+            margin-right: auto;
+            width: calc(100%);
+            height: calc(200px);
+            @include border-radius(10px);
+            background: var(--rr-common-white);
+            box-shadow: 0px 4px 14px 0px rgba(3, 6, 17, 0.14);
+
+            @media #{$xs} {
+                height: 150px;
+            }
+        }
+    }
+}

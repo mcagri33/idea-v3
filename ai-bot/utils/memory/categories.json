@@ -1,0 +1,88 @@
+{
+  "default": {
+    "keywords": [
+      "belge",
+      "evrak",
+      "dosya"
+    ],
+    "risk_patterns": [
+      "eksik",
+      "hatalı",
+      "yanlış"
+    ],
+    "weight": 1
+  },
+  "Yönetim Açıklama Sorumluluk ve Mektubu": {
+    "keywords": [],
+    "risk_patterns": [],
+    "weight": 1
+  },
+  "Cari Yıl Kurumlar Vergisi Beyannamesi": {
+    "keywords": [],
+    "risk_patterns": [],
+    "weight": 1
+  },
+  "Satış Fatura Listesi": {
+    "keywords": [],
+    "risk_patterns": [],
+    "weight": 1
+  },
+  "Kredi Ödeme Planları/Kredi Bilgileri": {
+    "keywords": [],
+    "risk_patterns": [],
+    "weight": 1
+  },
+  "Cari Yıl Mizan": {
+    "keywords": [],
+    "risk_patterns": [],
+    "weight": 1
+  },
+  "Stok Sayım Tutanağı": {
+    "keywords": [],
+    "risk_patterns": [],
+    "weight": 1
+  },
+  "Vergi Dairesi Borç Durumunu Gösteren Belge": {
+    "keywords": [],
+    "risk_patterns": [],
+    "weight": 1
+  },
+  "Amortisman Çalışması": {
+    "keywords": [],
+    "risk_patterns": [
+      "uyumsuz",
+      "tarih"
+    ],
+    "weight": 1
+  },
+  "Tapu Takyidat Yazısı": {
+    "keywords": [],
+    "risk_patterns": [],
+    "weight": 1
+  },
+  "Taşıt Araçları Listesi (İnteraktif Vergi Dairesinden Alınan)": {
+    "keywords": [],
+    "risk_patterns": [],
+    "weight": 1
+  },
+  "Finansal Tablo ve Faaliyet Raporlarının Kabulüne İlişkin Yönetim Kurulu Kararı": {
+    "keywords": [],
+    "risk_patterns": [],
+    "weight": 1
+  },
+  "Personel Listesi": {
+    "keywords": [],
+    "risk_patterns": [],
+    "weight": 1
+  },
+  "Banka Mutabakatları": {
+    "keywords": [],
+    "risk_patterns": [],
+    "weight": 1
+  },
+  "VUK Enflasyon Muhasebesi Çalışmaları ile Mahsup Fişleri": {
+    "keywords": [],
+    "risk_patterns": [],
+    "weight": 1
+  }
+}

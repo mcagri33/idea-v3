@@ -1,0 +1,71 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  3.1 header-common
+/*----------------------------------------*/
+.header-5 {
+	
+	&.header__area {
+		background-color: transparent;
+		box-shadow: none;
+		
+	}
+	.header {
+		
+		&__logo {
+			@media #{$xs} {
+				max-width: 110px;
+			}
+		}
+		
+		&__hamburger {
+			.bar-icon {
+				span {
+					background-color: #356DF1;
+				}
+			}
+		}
+
+		&__btn-wrap {
+			gap: 24px;
+		}
+		
+		&__action {
+			gap: 20px;
+		
+			.rr-btn.rr-btn__theme-6 {
+				padding: 12px 33.5px;
+			}
+		}
+	}
+}
+
+.header-5 {
+	
+	&__main {
+		display: flex;
+		align-items: center;
+		border-radius: 14px;
+		justify-content: space-between;
+		
+		@media #{$xs, $sm, $md} {
+			padding: 5.5px 15px;
+		}
+		
+		.main-menu {
+			
+			ul {
+				
+				li {
+					@media (max-width:1199px) {
+						
+						&:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)):not(:nth-child(4)):not(:nth-child(5)) {
+							display: none;
+						}
+					}
+				}
+			}
+		}
+	}
+
+}

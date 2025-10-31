@@ -1,0 +1,42 @@
+@use "../utils" as *;
+
+/*----------------------------------------*/
+/*  2.1 custom color
+/*----------------------------------------*/
+.color-white { color: var(--rr-common-white) }
+.color-heading-primary { color: var(--rr-heading-primary) }
+.color-text-body { color: var(--rr-text-body) };
+
+.rr-fw-medium { font-weight: var(--rr-fw-medium) }
+.rr-fw-regular {font-weight: var(--rr-fw-regular) }
+.rr-fw-sbold {font-weight: var(--rr-fw-sbold) }
+.rr-fw-black {font-weight: var(--rr-fw-black) }
+
+.rr-ff-heading { font-family: var(--rr-ff-heading) }
+.rr-ff-body { font-family: var(--rr-ff-body) }
+.rr-ff-body2 { font-family: var(--rr-ff-body2) }
+.font-serif { font-family: var(--rr-ff-serif) }
+.roboto { font-family: var(--rr-ff-roboto); }
+
+.body {
+    font-size: var(--rr-fs-body);
+    line-height: var(--rr-lh-body);
+}
+.font-regular {
+    font-weight: 400;
+}
+.font-medium {
+    font-weight: 500;
+}
+.font-sbold {
+    font-weight: 600;
+}
+.font-bold {
+    font-weight: 700;
+}
+.font-ebold {
+    font-weight: 800;
+}
+.font-black {
+    font-weight: 900;
+}

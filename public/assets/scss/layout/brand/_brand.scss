@@ -1,0 +1,39 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  8.1 brand
+/*----------------------------------------*/
+.brand {
+    
+    &__area {
+        
+        .swiper-wrapper {
+            justify-content: space-between;
+            
+            .swiper-slide {
+                width: auto;
+                height: auto;
+            }
+        }
+    }
+    
+    &__thumb {
+        img {
+            cursor: pointer;
+            height: auto;
+            width: auto;
+            @extend %rr-transition-3;
+        }
+        &:hover {
+            img {
+                @include transform(scale(1.05));
+            }
+        }
+    }
+}
+
+.brand__active {
+    .swiper-wrapper {
+        align-items: center;
+    }
+}

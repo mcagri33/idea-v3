@@ -1,0 +1,211 @@
+@use '../../utils' as *;
+
+.banner-7 {
+    &__area {
+        border-radius: 0px 0px 40px 40px;
+        background-color: #FFFAF3;
+    }
+
+    &__wrapper {
+        padding-top: 173px;
+        padding-bottom: 171px;
+        margin-left: 85px;
+        margin-right: 85px;
+        position: relative;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-left: 1px solid rgba(3, 6, 17, 0.1);
+        border-right: 1px solid rgba(3, 6, 17, 0.1);
+
+        @media #{$lg,$md,$sm,$xs} {
+            border-left: 0;
+            border-right: 0;
+            flex-direction: column;
+        }
+
+        @media #{$lg} {
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+
+        @media #{$md,$sm} {
+            margin-left: 40px;
+            margin-right: 40px;
+        }
+
+        @media #{$xs} {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        @media #{$md} {
+            padding-bottom: 100px;
+        }
+
+        @media #{$sm,$xs} {
+            padding-bottom: 70px;
+        }
+    }
+
+    &__right {
+        &__thumb {
+            padding-right: 59px;
+
+            @media #{$all} {
+                margin-top: 50px;
+            }
+
+            & img {
+                width: inherit;
+
+                @media #{$xxl,$xl,$lg,$md,$sm,$xs} {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    &__content {
+        margin-left: 59px;
+        @media #{$lg,$md,$sm,$xs} {
+            margin-left: 0;
+        }
+
+        &-title {
+            font-size: 90px;
+            line-height: 100px;
+            text-transform: capitalize;
+            margin-bottom: 25px;
+
+            span {
+                border-radius: 10px;
+                background: linear-gradient(135deg, #6C69FF 0%, #BA1AC8 100%);
+                color: var(--rr-common-white);
+                padding: 0px 11px 8px;
+                display: inline-block;
+                rotate: -3deg;
+              }
+
+            @media #{$xxl} {
+                font-size: 57px;
+                line-height: 80px;
+            }
+
+            @media #{$xl} {
+                font-size: 57px;
+                line-height: 70px;
+            }
+
+            @media #{$lg} {
+                font-size: 50px;
+                line-height: 60px;
+            }
+
+            @media #{$md} {
+                font-size: 60px;
+                line-height: 70px;
+            }
+
+            @media #{$sm} {
+                font-size: 45px;
+                line-height: 60px;
+            }
+
+            @media #{$xs} {
+                font-size: 40px;
+                line-height: 60px;
+            }
+        }
+
+        p {
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 30px;
+            opacity: .6;
+            color: var(--rr-text-body2);
+            margin-bottom: 40px;
+            font-family: var(--rr-ff-urbanist);
+        }
+
+        
+    }
+
+    &__bg__shape {
+        right: 159px;
+        bottom: 130px;
+        z-index: 1;
+
+        @media #{$xxl} {
+            right: 110px;
+            bottom: 0;
+        }
+
+        @media #{$xl} {
+            right: 100px;
+            bottom: 30px;
+        }
+
+        @media #{$lg} {
+            right: 30px;
+            bottom: 0px;
+        }
+    }
+}
+
+.banner-7__button {
+    @media #{$xs} {
+        margin-bottom: 30px;
+    }
+
+    & .rr-btn.rr-btn__theme-7 {
+        border: 0;
+        font-size: 16px;
+        border-radius: 6px;
+        padding: 17px 34.1px;
+        background: #FECE00;
+        font-family: var(--rr-ff-urbanist);
+        
+        .btn-wrap {
+            span {
+                font-weight: 700;
+                color: var(--rr-text-body2);
+            }
+            i {
+                margin-left: 5px;
+            }
+        }
+
+        &:hover {
+            .btn-wrap {
+                span {
+                    color: var(--rr-common-white);
+                }
+
+                i {
+                    color: var(--rr-common-white);
+                }
+            }
+        }
+    }
+
+    .Starting-demo {
+        color: #68686B;
+        font-weight: 600;
+        font-size: 16px;
+        margin-left: 25px;
+        font-family: var(--rr-ff-urbanist);
+
+        span {
+            color: #030611;
+            margin-left: 3px;
+        }
+
+        @media #{$xs} {
+            display: flex;
+            margin-top: 10px;
+            margin-left: 0px;
+        }
+    }
+}

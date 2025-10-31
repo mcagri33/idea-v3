@@ -1,0 +1,37 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  3.1 header-common
+/*----------------------------------------*/
+.header-2 {
+	
+	&.header__area {
+		top: 0;
+		left: 0;
+		padding: 0;
+		width: 100%;
+		z-index: 1030;
+		background-color: transparent;
+		@extend %rr-transition-3;
+		position: fixed!important;
+		border-bottom: 1px solid rgba(1, 9, 21, 0.1);
+		box-shadow: none;
+	}
+	
+	.header {
+		
+		&__logo {
+			@media #{$xs} {
+				max-width: 110px;
+			}
+		}
+		
+		&__hamburger {
+			.bar-icon {
+				span {
+					background-color: var(--rr-theme-primary1);
+				}
+			}
+		}
+	}
+}

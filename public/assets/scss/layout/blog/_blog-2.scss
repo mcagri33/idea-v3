@@ -1,0 +1,109 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  5.1 blog
+/*----------------------------------------*/
+
+.blog-2 {
+    
+    .container {
+        z-index: 1;
+        position: relative;
+    }
+    
+    &__shape-1 {
+        z-index: -1;
+        position: absolute;
+        width: 730px;
+        height: 730px;
+        background: rgba(211, 243, 81, 0.1);
+        filter: blur(200px);
+        left: -413px;
+        top: -410px;
+    }
+    
+    &__active {
+        margin-left: 82px;
+        margin-right: calc(-110vw / 2 + 100% / 2);
+        
+        @media #{$xl, $lg, $md, $sm, $xs} {
+            margin-left: 0;
+        }
+        
+        @media (max-width:700px) {
+            margin-right: 0;
+        }
+    }
+    
+    &__item {
+        
+        &_tag-date {
+            gap: 10px;
+            
+            .tags {
+                &:hover {
+                    color: var(--rr-common-white);
+                    background-color: var(--rr-theme-primary1);
+                }
+            }
+            
+            .date {
+                font-style: normal;
+                font-weight: 500;
+                font-size: 13px;
+                line-height: 17px;
+                text-transform: uppercase;
+                color: var(--rr-heading-primary)
+            }
+        }
+        
+        h4 {
+            text-transform: uppercase;
+            a {
+                display: block;
+                &:hover {
+                    color: var(--rr-theme-primary1);
+                }
+            }
+        }
+    }
+    
+    &__dot {
+        margin-top: 90px;
+        
+        @media #{$xl, $lg} {
+            margin-top: 60px;
+        }
+        @media #{$md, $sm, $xs} {
+            margin-top: 40px;
+        }
+        
+        .swiper-pagination-bullet {
+            width: 10px !important;
+            height: 10px !important;
+            background-color: transparent !important;
+            opacity: 1 !important;
+            border: 1px solid var(--rr-heading-primary) !important;
+            
+            &.swiper-pagination-bullet-active {
+                background-color: var(--rr-heading-primary) !important;
+            }
+        }
+    }
+    
+    &__content {
+        position: relative;
+        z-index: 1;
+        
+        &:after {
+            right: 0;
+            top: -50%;
+            position: absolute;
+            content: "";
+            height: 193%;
+            width: 1px;
+            background: rgba(1, 9, 21, 0.06);
+        }
+    }
+}
+

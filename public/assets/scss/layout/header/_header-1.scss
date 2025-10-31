@@ -1,0 +1,130 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  3.1 header-common
+/*----------------------------------------*/
+.header {
+	
+	&__left {
+		.horizontal-bar {
+			margin: 0 30px;
+			width: 1px;
+			height: 30px;
+			background: rgba(1, 9, 21, 0.1);
+			
+			@media #{$md, $sm, $xs} {
+				display: none;
+			}
+		}
+	}
+	
+	&__main {
+		
+	 	.main-menu {
+		
+			ul {
+		 
+				 li {
+					 @media (max-width:1100px) {
+						 
+						 &:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)):not(:nth-child(4)):not(:nth-child(5)) {
+							 display: none;
+						 }
+					 }
+				 }
+			}
+		}
+	}
+	
+	&__action {
+		
+		.rr-btn {
+			
+			&__login {
+				font-style: normal;
+				font-weight: 500;
+				font-size: 15px;
+				display: flex;
+				align-items: center;
+				gap: 5px;
+				line-height: 20px;
+				color: var(--rr-heading-primary);
+				
+				&:hover {
+					color: var(--rr-theme-primary);
+					
+					svg path[stroke="#010915"] {
+						stroke: var(--rr-theme-primary);
+					}
+				}
+			}
+			
+			&__theme {
+				padding: 9px 23px;
+				
+				.btn-wrap {
+					
+					span {
+						display: flex;
+						align-items: center;
+						gap: 6px;
+					}
+				}
+			}
+		}
+	}
+	
+	&__search {
+		margin-right: 10px;
+		
+		@media (max-width: 1350px) {
+			display: none;
+		}
+		
+		.search-box {
+			width: 239px;
+			position: relative;
+			z-index: 1;
+			height: 40px;
+			background: rgba(1, 9, 21, 0.05);
+			@include border-radius(100px);
+			
+			button {
+				position: absolute;
+				z-index: 1;
+				line-height: 40px;
+				right: 20px;
+				
+				&:hover svg path[stroke="#010915"]{
+					stroke: var(--rr-theme-primary);
+				}
+			}
+			
+			input {
+				padding: 0 20px;
+				padding-right: 43px;
+				width: 100%;
+				height: 100%;
+				background: transparent;
+				border: none;
+				font-weight: 400;
+				font-size: 15px;
+				line-height: 10px;
+				color: var(--rr-menu-primary);
+				@include rr-placeholder{
+					color: var(--rr-menu-primary);
+				}
+				
+				&:focus {
+					outline: none;
+				}
+			}
+		}
+	}
+	
+	&__btn-wrap {
+		display: flex;
+		align-items: center;
+		gap: 20px;
+	}
+}

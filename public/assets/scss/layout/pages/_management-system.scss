@@ -1,0 +1,170 @@
+@use "../../utils" as *;
+
+/*----------------------------------------*/
+/* 10.1 management-system
+/*----------------------------------------*/
+
+.management-system {
+
+
+    &__media {
+        margin-right: 20px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__content {
+        padding-left: 26px;
+
+        @media #{$xs} {
+            padding-left: 0;
+        }
+    }
+    &__shape {
+        top: 43px;
+        left: -32px;
+        position: absolute;
+        transform: translate(-50%, 0%);
+
+        @media #{$all, $xl} {
+            display: none;
+        }
+
+        img {
+            width: auto;
+        }
+    }
+    &__box {
+        position: relative; 
+
+        &-item {
+            gap: 20px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 35px;
+            position: relative;
+            overflow: hidden;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            @media #{$xs} {
+                flex-direction: column;
+                align-items: start;
+            }
+
+            &__shape {
+                position: absolute;
+                left: 156px;
+                top: 50%;
+                z-index: -1;
+                transform: translate(-50%, -50%);
+
+                @media #{$xs} {
+                    display: none;
+                }
+            }
+
+            &.item-2 {
+               .management-system__box-item {
+                &__number {
+                    background-color: #FFECEC;
+                    color: #CD26A8;
+                }
+
+                &__content {
+                    background-color: #FFECEC;
+                }
+               }
+            }
+            &.item-3 {
+               .management-system__box-item {
+                &__number {
+                    background-color: #E8FDF3;
+                    color: #25907A;
+                }
+
+                &__content {
+                    background-color: #E8FDF3;
+                }
+               }
+            }
+
+            &__number {
+                width: 60px;
+                height: 60px;
+                display: flex;
+                min-width: 60px;
+                font-size: 30px;
+                color: #356DF1;
+                font-weight: 600;
+                line-height: 54px;
+                align-items: center;
+                background: #ECF7FF;
+                justify-content: center;
+                @include border-radius(16px);
+
+            }
+
+            &__content {
+                width: 100%;
+                display: flex;
+                padding-top: 17px;
+                padding-left: 34px;
+                padding-right: 30px;
+                align-items: center;
+                padding-bottom: 17px;
+                background-color: #ECF7FF;
+                @include border-radius(10px);
+                justify-content: space-between;
+                position: relative;
+
+                @media #{$xs} {
+                    flex-direction: column;
+                    align-items: start;
+                    padding-left: 10px;
+                    padding-right: 10px;
+                }
+            }
+
+            &__text {
+
+                h4 {
+                    font-family: var(--rr-ff-roboto);
+                    font-weight: var(--rr-fw-sbold);
+                    margin-bottom: 10px;
+                }
+            }
+
+            &__icon {
+                width: 46px;
+                height: 46px;
+                min-width: 46px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                @extend %rr-transition-3;
+                @include border-radius(500px);
+                background-color: var(--rr-common-white);
+                box-shadow: 0px 1px 2px 0px rgba(11, 23, 40, 0.14);
+
+                @media #{$xs} {
+                    margin-top: 20px;
+                }
+
+                &:hover {
+                    background-color: var(--rr-theme-primary);
+
+                    svg [stroke="black"] {
+                        stroke: var(--rr-common-white);
+                    }
+                }
+            }
+        }
+    }
+}

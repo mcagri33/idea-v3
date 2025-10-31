@@ -1,0 +1,209 @@
+@use "../../utils" as *;
+
+/*----------------------------------------*/
+/* 10.1 testimonial
+/*----------------------------------------*/
+
+.testimonial {
+    position: relative;
+
+    &__space {
+      padding-top: 100px;
+      padding-bottom: 100px;
+
+      @media #{$md} {
+        padding-top: 80px;
+        padding-bottom: 80px;
+      }
+      @media #{$sm,$xs} {
+        padding-top: 70px;
+        padding-bottom: 70px;
+      }
+    }
+
+    &__bg {
+        position: absolute;
+        top: 0; 
+        left: 0;
+    }
+
+    .section-4 {
+        &__title-wrapper {
+            max-width: 606px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+    .container {
+        position: relative;
+    }
+
+    &__item {
+        background-color: #FBCC00;
+        @include border-radius(20px);
+        display: flex;
+        overflow: hidden;
+        flex-wrap: wrap;
+    }
+
+    &__content {
+        border-radius: 20px 0px 100px 20px;
+        background: var(--rr-common-white);
+        box-shadow: 0px 0px 70px 0px rgba(3, 6, 17, 0.14);
+        padding-top: 70px;
+        padding-left: 80px;
+        padding-bottom: 20px;
+        padding-right: 130px;
+        max-width: 920px;
+
+        @media #{$lg, $md, $sm, $xs} {
+           padding: 30px 20px;
+           max-width: 100%;
+        }
+
+        &-rating {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            margin-bottom: 35px;
+            img {
+                width: inherit;
+            }
+        }
+
+        p {
+            color: var(--rr-theme-body2);
+            font-size: 22px;
+            font-weight: var(--rr-fw-medium);
+            line-height: 40px;
+            opacity: 0.6;
+            margin-bottom: 0;
+
+            @media #{$xs} {
+                font-size: 16px;
+                line-height: 30px;
+            }
+        }
+
+        &-author {
+            margin-top: 40px;
+
+            h3 {
+
+            }
+
+            p {
+
+            }
+        }
+    }
+
+    &__media {
+        margin-top: auto;
+        padding-top: 30px;
+        margin-left: 35px;
+        max-width: 280px;
+
+        @media #{$xs} {
+            max-width: 200px;
+        }
+
+        @media #{$xl, $lg, $md, $sm, $xs} {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    
+  &__slider {
+
+    &__arrow {
+      @media #{$xs, $sm, $md, $lg} {
+        justify-content: center;
+        display: flex;
+        gap: 10px;
+      }
+
+      &-prev {
+        left: -10px;
+        background-color: #FBCC00;
+      }
+      &-next {
+        right: -10px;
+        background-color: #356DF1;
+      }
+      &-prev, &-next {
+        width: 50px;
+        height: 50px;
+        z-index: 9;
+        position: absolute;
+        top: 50%;
+        margin-top: 20px;
+        transform: translate(0, -50%);
+        @include border-radius(500px);
+
+        @media #{$xs, $sm, $md, $lg} {
+          top: inherit;
+          margin-top: 30px;
+          position: inherit;
+          @include transform(translate(0, 0));
+        }
+
+        &:hover {
+          background: var(--rr-theme-primary2);
+
+          svg path[stroke="#171718"]{
+            stroke: var(--rr-common-white);
+          }
+        }
+      }
+    }
+  }
+
+  &__bottom {
+    .carouselTicker {
+        margin: 0;
+        rotate: 0deg;
+    
+        &__list {
+          margin: 0;
+          padding: 50px 0;
+          list-style: none;
+          align-items: center;
+          justify-content: center;
+          gap: 30px;
+
+    
+          li {
+            gap: 30px;
+            float: left;
+            display: flex;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 23px 67px;
+            @include border-radius(10px);
+            align-items: center;
+            border: 1px solid #03061124;
+            background: transparent;
+            box-shadow: none;
+
+            @media #{$xs} {
+                padding: 11px 30px;
+            }
+
+            &:hover {
+                background: var(--rr-common-white);
+                border-color: transparent;
+                box-shadow: -3px 0px 0px 0px #356DF1, 0px 10px 40px 0px rgba(3, 6, 17, 0.20);
+            }
+          }
+        }
+    }
+  }
+}

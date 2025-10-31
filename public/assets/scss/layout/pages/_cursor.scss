@@ -1,0 +1,50 @@
+@use "../../utils" as *;
+
+/*----------------------------------------*/
+/*  10.4 cursor
+/*----------------------------------------*/
+.mouse-cursor {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 99999999 !important;
+    pointer-events: none;
+    border-radius: 50%;
+    transform: translateZ(0);
+    visibility: hidden;
+    
+    &.cursor-outer {
+        margin-left: -25px;
+        margin-top: -25px;
+        width: 50px;
+        height: 50px;
+        border: 1px solid var(--rr-heading-primary);
+        box-sizing: border-box;
+        z-index: 99999999 !important;
+        opacity: 0.1;
+        transition: all 0.08s ease-out;
+        
+        &.cursor-hover {
+            opacity: 0;
+        }
+    }
+    
+    &.cursor-inner {
+        margin-left: -3px;
+        margin-top: -3px;
+        width: 4px;
+        height: 4px;
+        z-index: 99999999 !important;
+        background-color: var(--rr-heading-primary);
+        transition: width 0.3s ease-in-out, height 0.3s ease-in-out, margin 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        
+        &.cursor-inner.cursor-hover {
+            margin-left: -40px;
+            margin-top: -40px;
+            width: 80px;
+            height: 80px;
+            background-color: var(--rr-theme-primary1);
+            opacity: 0.3;
+        }
+    }
+}

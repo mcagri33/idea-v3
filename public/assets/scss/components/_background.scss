@@ -1,0 +1,22 @@
+@use "../utils" as *;
+
+/*----------------------------------------*/
+/*  2.2 background
+/*----------------------------------------*/
+.white-bg {  background-color: var(--rr-common-white);}
+.black-bg {background-color: var(--rr-common-black);}
+// Theme bg
+.theme-bg { background-color: var(--rr-theme-primary); }
+.theme-bg-1 { background-color: #E9EBF7; }
+.theme-bg-2 { background-color: #F9F5EF; }
+.theme-bg-3 { background-color: var(--rr-theme-primary1); }
+.theme-bg-4 { background-color: var(--rr-theme-primary2); }
+
+// footer background
+.theme-footer-bg-1 { background-color: #0A2540; }
+.theme-footer-bg-2 { background-color: var(--rr-heading-primary); }
+.theme-footer-bg-3 { background-color: #23272E; }
+.theme-footer-bg-4 { background-color: #212121; }
+
+
+.theme-banner-3 { background-color: var(--rr-section-2); }

@@ -1,0 +1,184 @@
+@use "../../utils" as *;
+
+.contact-form-5 {
+    &__wrapper {
+        display: flex;
+        justify-content: space-between;
+        background: #ECF7FF;
+        border: 1px solid #CBBEF3;
+        border-radius: 20px;
+        overflow: hidden;
+        position: relative;
+
+        @media #{$sm,$xs} {
+            display: block;
+        }
+    }
+
+    &__box {
+        padding: 120px 100px;
+        position: relative;
+        z-index: 2;
+
+        @media #{$xl} {
+            padding: 100px 50px;
+        }
+
+        @media #{$lg} {
+            padding: 90px 30px;
+        }
+
+        @media #{$md} {
+            padding: 50px 30px;
+        }
+
+        @media #{$sm} {
+            padding: 70px 50px;
+        }
+
+        @media #{$xs} {
+            padding: 70px 15px;
+        }
+    }
+
+    &__title {
+        font-size: 50px;
+        font-weight: 600;
+        color: #030611;
+        margin-bottom: 44px;
+        font-family: var(--rr-ff-roboto);
+
+        @media #{$md} {
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        @media #{$sm} {
+            font-size: 45px;
+        }
+
+        @media #{$xs} {
+            font-size: 30px;
+            margin-bottom: 30px;
+        }
+    }
+
+    &__input {
+        margin-bottom: 25px;
+
+        img {
+            width: 18px;
+            position: absolute;
+            left: 20px;
+            top: 17px;
+        }
+
+        input {
+            background: #FFFFFF;
+            box-shadow: 0px 4px 14px rgba(3, 6, 17, 0.14);
+            border-radius: 10px;
+            height: 54px;
+            padding: 0px 46px;
+
+            @include rr-placeholder {
+                color: #030611 !important;
+                font-size: 16px;
+                font-weight: 400;
+                opacity: .6;
+                font-family: var(--rr-ff-roboto);
+            }
+        }
+
+        textarea {
+            height: 160px;
+            background: #FFFFFF;
+            box-shadow: 0px 4px 14px rgba(3, 6, 17, 0.14);
+            border-radius: 10px;
+            padding: 15px 46px;
+
+            @include rr-placeholder {
+                color: #030611 !important;
+                font-size: 16px;
+                font-weight: 400;
+                opacity: .6;
+                font-family: var(--rr-ff-roboto);
+            }
+
+            @media #{$xs} {
+                padding: 15px 40px;
+            }
+        }
+    }
+
+    &__thumb {
+        min-width: 565px;
+        height: 716px;
+        position: relative;
+        z-index: 1;
+
+        @media #{$xl} {
+            min-width: 450px;
+            height: 673px;
+        }
+
+        @media #{$lg} {
+            min-width: 400px;
+            height: 673px;
+        }
+
+        @media #{$md} {
+            min-width: 45%;
+        }
+
+        @media #{$xs,$sm} {
+            min-width: 100%;
+            height: auto;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__shape {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    &__btn {
+        .rr-btn {
+            &:before {
+                background: #FECE00;
+            }
+
+            &.rr-btn__theme-5 {
+                background: #356DF1;
+                border-radius: 6px;
+                font-family: var(--rr-ff-roboto);
+                font-weight: 600;
+                font-size: 16px;
+                color: #FFFFFF !important;
+                padding: 15px 49.2px;
+                border: 0;
+
+                .btn-wrap {
+                    i {
+                        margin-left: 8px;
+                    }
+
+                    .text-one {
+                        color: var(--rr-common-white);
+                    }
+
+                    .text-two {
+                        color: var(--rr-text-body2);
+                    }
+                }
+            }
+        }
+    }
+}
+

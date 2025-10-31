@@ -1,0 +1,54 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  10.3 feedback
+/*----------------------------------------*/
+.customer-feedback {
+    &__active {
+        max-width: 1800px;
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-bottom: -50px;
+        
+        .swiper-slide {
+            &.swiper-slide-active {
+                .feedback__item {
+                    box-shadow: 0px 20px 50px rgba(1, 9, 21, 0.06);
+                }
+            }
+        }
+    }
+    
+    &__dot {
+        margin-top: 4px;
+        text-align: center;
+        
+        @media #{$sm, $xs} {
+            margin-top: -10px;
+        }
+        
+        .swiper-pagination-bullet {
+            width: 10px !important;
+            height: 10px !important;
+            background-color: transparent !important;
+            opacity: 1 !important;
+            border: 1px solid var(--rr-heading-primary) !important;
+            
+            &.swiper-pagination-bullet-active {
+                background-color: var(--rr-heading-primary) !important;
+            }
+        }
+    }
+}
+
+.feedback__item {
+    &-customer {
+        @include border-radius(0);
+        
+        .feedback__item {
+            &-thumb {
+                @include border-radius(0);
+            }
+        }
+    }
+}

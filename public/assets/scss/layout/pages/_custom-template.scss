@@ -1,0 +1,183 @@
+@use "../../utils" as *;
+
+/*----------------------------------------*/
+/*  10.4 custom-template
+/*----------------------------------------*/
+
+.custom-template {
+
+    &__border {
+        border-top: 1px solid rgba(3, 6, 17, 0.10);
+        
+    }
+
+    &__wrapper {
+        display: flex;
+        align-items: center;
+
+        @media #{$md, $sm, $xs} {
+            flex-wrap: wrap;
+        }
+
+    }
+
+    &__content {
+        max-width: 243px;
+
+        @media #{$all} {
+            min-width: 100%;
+        }
+    }
+
+
+    &__item {
+        padding-top: 60px;
+        padding-right: 56px;
+        padding-bottom: 80px;
+        min-width: 348px;
+        padding-left: 48px;
+
+        @media #{$all, $xl, $xxl} {
+            min-width: inherit;
+        }
+        @media #{$lg} {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        @media #{$md, $sm, $xs} {
+            padding-left: 0;
+            padding-bottom: 0;
+        }
+
+        &:first-child {
+            padding-left: 0;
+        }
+
+
+        &:not(:last-child) {
+            border-right: 1px solid rgba(3, 6, 17, 0.10);
+
+            @media #{$md, $sm, $xs} {
+                border-right: none;
+            }
+        }
+
+        &-icon {
+            width: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 50px;
+            height: 60px;
+            border-radius: 6px;
+
+            @media #{$md, $sm, $xs} {
+                margin-bottom: 20px;
+            }
+
+            img {
+                width: auto;
+            }
+
+            &.item-1 {
+                background: linear-gradient(137deg, rgba(90, 111, 252, 0.04) 2.73%, rgba(90, 111, 252, 0.12) 100%);
+            }
+            &.item-2 {
+                background: linear-gradient(137deg, rgba(177, 74, 247, 0.04) 2.73%, rgba(177, 74, 247, 0.12) 100%);
+            }
+            &.item-3 {
+                background: linear-gradient(137deg, rgba(21, 163, 157, 0.04) 2.73%, rgba(21, 163, 157, 0.14) 100%);
+            }
+            &.item-4 {
+                background: linear-gradient(137deg, rgba(61, 168, 15, 0.04) 2.73%, rgba(61, 168, 15, 0.14) 100%);
+            }
+        }
+
+        &-text {
+            h3 {
+                color: #030611;
+                margin-bottom: 10px;
+                font-family: var(--rr-ff-urbanist);
+
+                &:hover {
+                    color: var(--rr-theme-primary);
+                }
+            }
+
+            p {
+                margin-bottom: 50px;
+                color: #030611;
+                font-size: 16px;
+                font-weight: 500;
+                line-height: 24px;
+                opacity: 0.7;
+
+                @media #{$md, $sm, $xs} {
+                    margin-bottom: 20px;
+                }
+            }
+        }
+
+        .red-more {
+            color: #030611;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: normal;
+            font-family: var(--rr-ff-urbanist);
+
+            &:hover {
+                color: var(--rr-theme-primary);
+
+                svg [stroke="#030611"] {
+                    stroke:  var(--rr-theme-primary);
+                }
+            }
+        }
+    }
+
+    .running-2 {
+        background: #030611;
+
+        @media #{$md, $sm, $xs} {
+            margin-top: 20px;
+        }
+
+        .carouselTicker {
+            margin: 0;
+            rotate: 0deg;
+        
+            &__list {
+              margin: 0;
+              padding: 23px 0;
+              list-style: none;
+              align-items: center;
+              justify-content: center;
+              gap: 95px;
+
+              
+              @media #{$sm, $xs} {
+                gap: 30px;
+              }
+    
+        
+              li {
+                gap: 10px;
+                float: left;
+                display: flex;
+                color: #FECE00;
+                font-size: 18px;
+                font-weight: 600;
+                text-transform: uppercase;
+                font-family: var(--rr-ff-urbanist);
+                padding: 0;
+                background-color: transparent;
+                box-shadow: none;
+                img {
+                    width: auto;
+                }
+              }
+            }
+        }
+    }
+}

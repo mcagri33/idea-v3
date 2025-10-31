@@ -1,0 +1,124 @@
+@use "../../utils" as *;
+
+/*----------------------------------------*/
+/* 10.1 examine
+/*----------------------------------------*/
+
+.examine {
+
+    &__space {
+        padding-top: 80px;
+    }
+
+    &__top-shape {
+        position: absolute;
+        right: -130px;
+
+        img {
+            width: inherit;
+        }
+    }
+
+    &__bottom-shape {
+        position: absolute;
+        bottom: 100px;
+        right: -78px;
+        img {
+            width: inherit;
+        }
+    }
+
+    .container {
+        position: relative;
+    }
+
+    &__wrapper {
+        position: relative;
+        border-radius: 0px 14px 14px 0px;
+        margin-left: -277px;
+
+        @media #{$xl, $lg, $md, $sm, $xs} {
+            margin-left: 0;
+        }
+
+        
+        &::before {
+            background: #FCF9FF;
+            border: 1px solid rgb(160 51 255 / 50%);
+            border-left: 0;
+            width: calc(100% - -10000px);
+            height: 100%;
+            content: "";
+            left: -10000px;
+            height: 100%;
+            content: "";
+            border-radius: 0px 14px 14px 0px;
+            position: absolute;
+
+        }
+
+    }
+
+    &__shape {
+        position: absolute;
+        top: 85px;
+        right: 39px;
+    }
+
+    &__media {
+        text-align: right;
+        img {
+            margin-top: 60px;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+            margin-inline-end: 80px;
+            max-width: 800px;
+        }
+    }
+
+    &__content {
+        margin-left: 60px;
+
+        @media #{$lg, $md, $sm, $xs} {
+            margin-left: 0;
+            margin-top: 40px;
+        }
+
+        p {
+            color: #030611;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 28px;
+            opacity: 0.6;
+        }
+
+        ul {
+            
+            li {
+                list-style: none;
+                border-radius: 4px;
+                background:linear-gradient(90deg, rgb(3 6 17 / 10%) 0%, #FFF 100%);
+                gap: 6px;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                margin-bottom: 14px;
+                padding: 8px;
+                padding-left: 10px;
+                padding-right: 0;
+                color: #030611;
+                font-size: 16px;
+                font-weight: 600;
+
+                @media #{$xxs} {
+                   font-size: 12px;
+                   gap: 4px;
+                   padding-left: 4px;
+
+                }
+            }
+        }
+    }
+}

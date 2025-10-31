@@ -1,0 +1,306 @@
+@use '../../utils' as *;
+
+
+/*----------------------------------------*/
+/*  3.1 header-common
+/*----------------------------------------*/
+.header-7 {
+	
+	&.header__area {
+		background-color: transparent;
+		box-shadow: none;
+		position: fixed;
+		width: 100%;
+		top: 34px;
+		z-index: 99;
+		border-bottom: 1px solid rgba(3, 6, 17, 0.1);
+		@media #{$all} {
+			top: 0;
+		}
+		
+		@media #{$md,$sm,$xs} {
+			padding: 20px 0;
+		}
+		
+        // .container {
+		// 	@media (min-width: 1400px) {
+		// 		max-width: 1320px !important;
+		// 	}
+		// }
+	}
+	.header {
+		
+		&__logo {
+			@media #{$xs} {
+				max-width: 110px;
+			}
+		}
+		
+		&__hamburger {
+			.bar-icon {
+				span {
+					background-color: var(--rr-theme-primary2);
+				}
+			}
+		}
+
+		&__btn-wrap {
+			gap: 24px;
+		}
+		
+		&__action {
+			gap: 20px;
+
+			.rr-btn__login {
+				font-size: 16px;
+                gap: 6px;
+				color: var(--rr-text-body2);
+				font-weight: var(--rr-fw-bold);
+                font-family: var(--rr-ff-urbanist);
+				
+				&:hover {
+					color: var(--rr-theme-primary);
+
+                    svg [stroke="#030611"]{
+                        stroke: var(--rr-theme-primary);
+                    }
+				}
+			}
+		
+			.rr-btn.rr-btn__theme-7 {
+				border: none;
+				padding: 12px 29px;
+				border-radius: 6px;
+				font-size: 16px;
+				font-weight: var(--rr-fw-bold);
+				background-color: var(--rr-text-body2);
+				
+				.btn-wrap {
+					span {
+						color: var(--rr-common-white);
+                        font-family: var(--rr-ff-urbanist);
+					}
+				}
+			}
+		}
+	}
+}
+
+.header-7 {
+	
+	&_top {
+		padding: 3px 0px 3px;
+		background: linear-gradient(135deg, #392896 0%, #C32BAC 100%);
+		&__notifation {
+			gap: 10px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+            padding: 0px 160px;
+		}
+
+        &__left {
+            p {
+                color: #FBD3F6;
+                font-size: 16px;
+                font-weight: 600;
+                display: flex;
+                gap: 9px;
+                margin-bottom: 0;
+                font-family: var(--rr-ff-urbanist);
+                span {
+                    color: var(--rr-common-white);
+                    font-weight: 600;
+                }
+            }
+        }
+
+        &__right {
+            ul {
+                display: flex;
+                align-items: center;
+                list-style: none;
+                gap: 24px;
+
+                li {
+                    gap: 8px;
+                    display: flex;
+                    align-items: center;
+                    font-size: 16px;
+                    font-weight: 600;
+                    font-family: var(--rr-ff-urbanist);
+
+                    a {
+                        color: rgb(255 255 255 / 70%);
+                    }
+
+                    &:hover {
+
+                        svg  [stroke="white"]{
+                            stroke: var(--rr-theme-primary);
+                        }
+                        a {
+                            color: var(--rr-theme-primary);
+                        }
+                    }
+                }
+            }
+        }
+	}
+	
+	&__main {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		.main-menu {
+			
+			ul {
+				
+				li {
+					@media (max-width:1199px) {
+						
+						&:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)):not(:nth-child(4)):not(:nth-child(5)) {
+							display: none;
+						}
+					}
+				}
+			}
+		}
+	}
+
+}
+
+
+// .header-7_top {
+//     padding: 5px 0px;
+//     background: linear-gradient(135deg, #392896 0%, #C32BAC 100%);
+
+//     & .header-7 {
+//         &_top {
+//             &__discount {
+//                 display: flex;
+//                 justify-content: space-between;
+//                 gap: 10px;
+//                 flex-wrap: nowrap;
+//             }
+
+//             &__text {
+//                 & span {
+//                     color: #FBD3F6;
+//                     font-family: var(--rr-ff-body2);
+//                 }
+
+//                 & a {
+//                     color: var(--rr-common-white);
+//                     text-decoration: none;
+//                     font-size: 16px;
+//                     font-weight: 600;
+//                     font-family: var(--rr-ff-body2);
+//                 }
+//             }
+
+//             &__contact {
+//                 & a {
+//                     font-size: 16px;
+//                     color: var(--rr-common-white);
+//                     opacity: .7;
+//                     font-weight: 600;
+//                     font-family: var(--rr-ff-body2);
+//                 }
+
+//                 & span {
+//                     margin-right: 8px;
+//                     margin-left: 25px;
+//                 }
+//             }
+//         }
+//     }
+// }
+
+
+
+// .header-7 {
+//     padding-left: 85px;
+//     padding-right: 85px;
+//     box-shadow: none;
+//     background-color: var(--rr-home7-color-bg);
+//     border-bottom: 1px solid rgb(3, 6, 17, 0.1);
+
+//     @media #{$lg} {
+//         padding-left: 60px;
+//         padding-right: 60px;
+//     }
+
+//     @media #{$md,$sm,$xs} {
+//         padding-top: 15px;
+//         padding-bottom: 15px;
+//         padding-left: 15px;
+//         padding-right: 15px;
+//     }
+
+//     & .header-7 {
+//         &__main {
+//             padding: 0 55px 0 50px;
+//             border-radius: 0px;
+//             background: var(--rr-home7-color-bg);
+//             box-shadow: none;
+//             border-left: 1px solid rgba(3, 6, 17, 0.1);
+//             border-right: 1px solid rgba(3, 6, 17, 0.1);
+
+//             @media #{$xl,$lg} {
+//                 padding: 0 20px 0 20px;
+//             }
+
+//             @media #{$md,$sm,$xs} {
+//                 border-left: 0;
+//                 border-right: 0;
+//                 padding: 0 0px 0 0px;
+//             }
+//         }
+//     }
+
+//     & .main-menu-7 {
+//         & ul {
+//             & li>a {
+//                 padding: 29.5px 0;
+//                 text-transform: capitalize;
+//                 font-weight: 600;
+//                 color: #797B7D;
+//                 padding: 29.5px 0;
+//                 font-family: var(--rr-ff-urbanist);
+//             }
+//         }
+//     }
+
+//     & .header__action {
+//         & .rr-btn__login {
+//             font-weight: 600;
+//             font-size: 16px;
+//             gap: 6px;
+//             color: #030611;
+//             font-family: var(--rr-ff-body2);
+//         }
+//     }
+
+//     & .header__btn-wrap {
+//         gap: 24px;
+//     }
+// }
+
+// .header__btn-wrap {
+//     & .rr-btn.rr-btn__theme-5 {
+//         font-weight: 700;
+//         font-size: 16px;
+//         line-height: normal;
+//         background: #030611;
+//         border-radius: 6px;
+//         color: #fff;
+//         font-family: var(--rr-ff-body2);
+//         border: none;
+//         text-transform: none;
+
+//         & .btn-wrap .text-one {
+//             color: #fff;
+//         }
+//     }
+// }

@@ -1,0 +1,312 @@
+@use '../../utils' as *;
+
+// Footer-7 style
+.footer-7__area-common {
+	position: relative;
+	padding-top: 127px;
+    background-color: #0C0C0C;
+
+	@media #{$md} {
+		padding-top: 100px;
+	}
+	@media #{$sm,$xs} {
+		padding-top: 80px;
+	}
+	
+	// @media #{$md} {
+	// 	padding-top: 80px;
+	// }
+	// @media #{$sm,$xs} {
+	// 	padding-top: 70px;
+	// }
+	
+	.col-6 {
+		@media (max-width:480px) {
+			flex-shrink: 0;
+			width: 100%;
+			max-width: 100%;
+			padding-right: calc(var(--bs-gutter-x) * .5);
+			padding-left: calc(var(--bs-gutter-x) * .5);
+			margin-top: var(--bs-gutter-y);
+		}
+	}
+}
+
+.footer-7 {
+	&__widget {
+		margin-bottom: 40px;
+		
+		&.footer-7__widget-item-2 {
+			padding-left: 40px;
+            margin-top: 17px;
+
+            @media #{$lg,$md,$sm,$xs} {
+                padding-left: 0;
+            }
+		}
+		&.footer-7__widget-item-3 {
+            padding-left: 80px;
+            margin-top: 17px;
+
+            @media #{$lg} {
+                padding-left: 30px;
+            }
+
+            @media #{$md,$sm,$xs} {
+                padding-left: 0px;
+            }
+		}
+		&.footer-7__widget-item-4 {
+            padding-left: 40px;
+            margin-top: 17px;
+
+            @media #{$lg,$md,$sm,$xs} {
+                padding-left: 0px;
+            }
+		}
+		
+		&-title {
+            
+			h3 {
+				font-size: 24px;
+                padding-top: 17px;
+                color: #fff;
+                font-weight: 700;
+                margin-bottom: 36px;
+                font-family: var(--rr-ff-urbanist);
+				
+				@media #{$lg, $sm, $xs} {
+					font-size: 18px;
+				}
+			}
+		}
+		
+		&-description {
+			p {
+				font-style: normal;
+				font-weight: 400;
+				font-size: 15px;
+				line-height: 24px;
+				color: var(--rr-common-white);
+				opacity: 0.7;
+				margin-bottom: 0;
+			}
+		}
+	}
+	
+	&__logo {
+		img {
+			max-width: 144px;
+		}
+	}
+	
+    &__contact {
+        p {
+            color: var(--rr-common-white);
+            opacity: 0.7;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 24px;
+            font-family: var(--rr-ff-urbanist);
+        }
+        & span {
+            font-size: 15px;
+            color: #FECE00;
+            font-weight: 500;
+            line-height: 22px;
+            font-family: var(--rr-ff-urbanist);
+
+            & svg {
+                margin-right: 10px;
+            }
+        }
+
+        & a {
+            font-size: 15px;
+            font-weight: 500;
+            color: #fff;
+            line-height: 22px;
+            display: block;
+            margin-left: 28px;
+            font-family: var(--rr-ff-urbanist);
+            transition: .3s;
+            &:hover{
+                color: #FECE00;
+            }
+        }
+    }
+	
+	&__link {
+		ul {
+			display: grid;
+			grid-template-columns: 1fr;
+			grid-gap: 15px;
+            list-style: none;
+			li {
+				font-size: 15px;
+				font-weight: 400;
+				line-height: 30px;
+				font-style: normal;
+                position: relative;
+				color: var(--rr-common-white);
+
+				&:hover {
+					color: var(--rr-common-white);
+				}
+				
+				a {
+					font-weight: 500;
+					font-size: 15px;
+					line-height: 30px;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+					color: rgb(255 255 255 / 70%);
+                    font-family: var(--rr-ff-urbanist);
+
+                    i {
+                        font-size: 12px;
+                        color: var(--rr-common-white);
+                    }
+			 
+					&:hover {
+						color: #FECE00;
+
+                        i {
+                            color: #FECE00;
+                        }
+					}
+				}
+			}
+		}
+	}
+	
+	&__social {
+		@include flexbox();
+		gap: 8px;
+		
+		a {
+			color: var(--rr-common-white);
+			@include flexbox();
+			align-items: center;
+			justify-content: center;
+			width: 36px;
+			height: 36px;
+			font-size: 15px;
+			background: #1DA0F1;
+			@include border-radius(500px);
+			i {
+				color: var(--rr-common-white);
+				@include flexbox();
+				align-items: center;
+				justify-content: center;
+				width: 36px;
+				height: 36px;
+				font-size: 15px;
+				background: transparent;
+				@include border-radius(500px);
+				@extend %rr-transition-3;
+
+				&.fa-facebook-f {
+					background-color: #1877F2;
+				}
+
+				&.fa-linkedin-in {
+					background-color: #0A66C2;
+				}
+				&.fa-pinterest {
+					background-color: #CB2027;
+				}
+			}
+
+
+		
+			&:hover {
+				color: var(--rr-common-black);
+				background-color: #FECE00;
+
+				i {
+					color: var(--rr-common-black);
+					background-color: #FECE00;
+				}
+
+				svg [fill="white"]{
+					fill: var(--rr-common-black);
+				}
+			}
+		}
+	}
+
+    .newsletters-des {
+        color: var(--rr-common-white);
+        opacity: 0.7;
+    }
+    &__newsletters {
+        p {
+            opacity: 0.7;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 24px;
+			max-width: 233px;
+            color: var(--rr-common-white);
+
+			@media #{$lg, $md, $sm, $xs} {
+				max-width: 100%;
+			}
+        }
+    }
+	
+	&__form {
+        & input {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 6px;
+            padding-right: 130px;
+            color: var(--rr-common-white) !important;
+
+            @include rr-placeholder {
+                color: #fff !important;
+                font-size: 15px;
+                font-weight: 500;
+                opacity: .7;
+                font-family: var(--rr-ff-urbanist);
+            }
+
+            @media #{$sm, $xs} {
+                padding-right: 30px;
+            }
+        }
+
+        .rr-btn__theme-7 {
+            background: #FECE00;
+            border-radius: 6px;
+            border: 0;
+            font-size: 16px;
+            padding: 10px 20px;
+            font-family: var(--rr-ff-urbanist);
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            
+            .btn-wrap {
+                span {
+                    font-weight: 700;
+                    color: var(--rr-text-body2);
+                }
+            }
+
+            &:hover {
+                .btn-wrap {
+                    span {
+                        color: var(--rr-common-white)
+                    }
+                }
+            }
+
+            @media #{$sm,$xs} {
+                position: inherit;
+                right: 0px;
+            }
+        }
+    }
+}

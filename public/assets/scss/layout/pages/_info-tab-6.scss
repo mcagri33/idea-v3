@@ -1,0 +1,171 @@
+@use '../../utils' as *;
+
+
+.info-tab-6 {
+    &__tab {
+        background-color: var(--rr-common-white);
+        border-radius: 6px;
+        padding: 5px 10px;
+
+        span {
+            font-size: 18px;
+            color: var(--rr-text-body2);
+            font-weight: 600;
+            line-height: 32px;
+            display: flex;
+            align-items: center;
+            padding: 9px 35.1px;
+            border-radius: 6px;
+            cursor: pointer;
+
+            svg {
+                margin-right: 10px;
+            }
+
+            @media #{$xl} {
+                padding: 9px 25.1px;
+            }
+
+            @media #{$lg} {
+                padding: 9px 29.1px;
+                margin-bottom: 10px;
+            }
+
+            @media #{$md} {
+                padding: 9px 16.1px;
+                margin-bottom: 10px;
+            }
+            @media #{$sm} {
+                padding: 9px 20.1px;
+                margin-bottom: 10px;
+            }
+            @media #{$xs} {
+                padding: 9px 25px;
+                margin-bottom: 10px;
+            }
+        }
+
+        &__wrapper {
+            background-color: rgb(9, 17, 36);
+            padding: 0 70px;
+            padding-top: 60px;
+            border-radius: 30px;
+            z-index: 2;
+            position: relative;
+            overflow: hidden;
+
+            @media #{$xl,$lg,$md} {
+                padding: 0 30px;
+                padding-top: 60px;
+            }
+
+            @media #{$sm} {
+                padding: 0 30px;
+                padding-top: 40px;
+            }
+            @media #{$xs} {
+                padding: 0 20px;
+                padding-top: 40px;
+            }
+        }
+
+        & .nav-links.active span {
+            background: var(--rr-theme-primary3);
+        }
+    }
+
+    &__dec {
+        color: var(--rr-common-white);
+        opacity: .6;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 28px;
+        margin-bottom: 0;
+        font-family: var(--rr-ff-urbanist);
+    }
+
+    &__thumb {
+        width: 500px;
+        height: 340px;
+
+        @media #{$lg} {
+            width: 420px;
+            height: 292px;
+        }
+
+        @media #{$sm} {
+            width: 455px;
+            height: 310px;
+        }
+        @media #{$xs} {
+            width: 100%;
+            height: 100%;
+        }
+
+        @media #{$md,$sm,$xs} {
+            margin-bottom: 30px;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+    }
+
+    &__wrapper {
+        padding-top: 100px;
+        padding-bottom: 140px;
+
+        @media #{$lg} {
+            padding-top: 80px;
+            padding-bottom: 100px;
+        }
+
+        @media #{$md} {
+            padding-top: 70px;
+            padding-bottom: 100px;
+        }
+
+        @media #{$sm,$xs} {
+            padding-top: 60px;
+            padding-bottom: 90px;
+        }
+    }
+
+    &__bg {
+        &__shape {
+            position: absolute;
+            z-index: -1;
+            opacity: 0.7;
+            filter: blur(150px);
+            border-radius: 100%;
+
+            &__1 {
+                width: 671px;
+                height: 446px;
+                background: #4DF100;
+                left: 60px;
+                top: 12px;
+            }
+
+            &__2 {
+                width: 553px;
+                height: 400px;
+                background: #00C2FF;
+                filter: blur(130px);
+                right: 99px;
+                top: 35px;
+            }
+
+            &__3 {
+                width: 559px;
+                height: 559px;
+                background: #CC00FF;
+                bottom: -59px;
+                left: 355px;
+            }
+        }
+    }
+}

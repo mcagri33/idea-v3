@@ -1,0 +1,304 @@
+@use "../../utils" as *;
+
+
+.pricing-5 {
+    &__toggle {
+        &-button {
+            z-index: 1;
+            display: flex;
+            position: relative;
+            align-items: center;
+            justify-content: center;
+
+            input,
+            label {
+                display: inline-block;
+                vertical-align: middle;
+                margin: 10px 0;
+            }
+        }
+    }
+
+    &__toggler {
+        font-size: 16px;
+        margin: 0 10px;
+        font-family: var(--rr-ff-roboto);
+        font-weight: 500;
+        line-height: 30px;
+        color: rgba(3, 6, 17, 1);
+
+        &.active {
+            color: var(--rr-theme-primary);
+        }
+    }
+
+    &__toggle {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 26px;
+
+        & input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        & .switcher {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(53, 109, 241, 1);
+            transform: translate(0px, 0px);
+            transition: .6s ease;
+
+            &::before {
+                position: absolute;
+                content: "";
+                width: 16px;
+                height: 16px;
+                background-color: var(--rr-common-white);
+                top: 5px;
+                left: 4px;
+                transition: .4s;
+            }
+
+            &.toggle {
+                border-radius: 30px;
+
+                &::before {
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+
+    &__title {
+        font-family: var(--rr-ff-roboto);
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 2px;
+        color: rgba(3, 6, 17, 1);
+        text-align: left;
+    }
+
+    &__card {
+        background: rgba(236, 247, 255, 1);
+        border: 1px solid rgba(203, 190, 243, 1);
+        border-radius: 10px;
+        padding: 50px 40px;
+        padding-top: 43px;
+        position: relative;
+        margin-top: -270px;
+
+        @media #{$lg} {
+            padding: 40px 30px;
+        }
+
+        @media #{$xs} {
+            padding: 50px 20px;
+        }
+
+        &__price {
+            border-bottom: 1px solid rgba(3, 6, 17, 0.1);
+            padding-bottom: 27px;
+            margin-bottom: 35px;
+
+            h2 {
+                span {
+                    font-family: var(--rr-ff-roboto);
+                    font-size: 40px;
+                    font-weight: 700;
+                    line-height: 40px;
+                    text-align: left;
+                    color: rgba(3, 6, 17, 1);
+
+                    @media #{$xs} {
+                        font-size: 35px;
+                    }
+
+                    del {
+                        font-family: var(--rr-ff-roboto);
+                        font-size: 20px;
+                        font-weight: 500;
+                        line-height: 40px;
+                        text-align: left;
+                        color: rgba(158, 160, 167, 1);
+                    }
+                }
+            }
+        }
+
+        &__2 {
+            background-color: rgb(255, 236, 236);
+            border: 1px solid rgb(243, 190, 231);
+
+            & .pricing-5 {
+                &__price {
+                    &__btn {
+                        & .rr-btn {
+                            &.rr-btn__theme-5 {
+                                background: var(--rr-theme-primary);
+
+                                &::before {
+                                    background: rgba(3, 6, 17, 1);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            @media #{$sm,$xs} {
+                margin-top: 30px;
+            }
+        }
+
+        &__3 {
+            background-color: rgb(232, 253, 243);
+            border: 1px solid rgb(168, 209, 207);
+
+            @media #{$md} {
+                margin-top: 30px;
+            }
+
+            @media #{$sm,$xs} {
+                margin-top: 30px;
+            }
+        }
+    }
+
+    &__price {
+        &__btn {
+            .rr-btn__theme-5 {
+                background: rgba(3, 6, 17, 1);
+                color: var(--rr-common-white);
+                border-radius: 6px;
+                width: 100%;
+                text-align: center;
+                font-family: var(--rr-ff-roboto);
+                font-size: 16px;
+                font-weight: 600;
+                padding: 16px 0px;
+                border: 0;
+                .btn-wrap .text-one {
+                    color: rgba(255, 255, 255, 1);
+                }
+            }
+
+        }
+    }
+
+    &__pricing {
+        &__body {
+            ul {
+                list-style: none;
+
+                li {
+                    font-family: var(--rr-ff-roboto);
+                    font-size: 15px;
+                    font-weight: 400;
+                    line-height: 24px;
+                    text-align: left;
+                    margin-bottom: 22px;
+                    padding-left: 14px;
+                    color: rgba(3, 6, 17, 1);
+                    position: relative;
+
+                    &:last-child {
+                        margin-bottom: 50px;
+
+                        @media #{$lg} {
+                            margin-bottom: 35px;
+                        }
+                    }
+
+                    &:before {
+                        content: "";
+                        width: 6px;
+                        height: 6px;
+                        background: rgba(0, 158, 117, 1);
+                        position: absolute;
+                        border-radius: 100%;
+                        top: 9px;
+                        left: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    &__tab {
+        span {
+            top: 30px;
+            right: 30px;
+            font-size: 14px;
+            font-weight: 400;
+            border-radius: 4px;
+            text-align: center;
+            position: absolute;
+            padding: 0px 13.6px;
+            font-family: var(--rr-ff-roboto);
+            background: rgba(0, 158, 117, 1);
+            color: rgba(255, 255, 255, 1);
+        }
+    }
+
+    &__top {
+        &__wrapper {
+            background: rgb(230, 242, 254);
+            margin: 0 30px;
+            border-radius: 30px;
+            text-align: center;
+            padding-top: 100px;
+            padding-bottom: 270px;
+            overflow: hidden;
+            position: relative;
+
+            @media #{$sm} {
+                margin: 0 34px;
+            }
+            @media #{$xs} {
+                margin: 0 15px;
+            }
+        }
+    }
+
+    &__bg {
+        &__shape {
+            &__1 {
+                width: 1650.75px;
+                height: 171.95px;
+                position: absolute;
+                left: 66px;
+                bottom: 135px;
+                filter: blur(200px);
+                background: rgba(95, 252, 40, 0.3);
+                transform: matrix(0.94, 0.34, -0.34, 0.94, 0, 0);
+            }
+
+            &__2 {
+                position: absolute;
+                width: 1650.75px;
+                height: 171.95px;
+                background: rgba(0, 163, 255, 0.2);
+                filter: blur(200px);
+                bottom: 105px;
+                right: 130px;
+                transform: matrix(0.94, -0.34, 0.34, 0.94, 0, 0);
+            }
+
+            &__3 {
+                position: absolute;
+                top: 0;
+                left: 265px;
+            }
+        }
+    }
+}
+input:checked+.switcher::before {
+    transform: translateX(35px);
+}

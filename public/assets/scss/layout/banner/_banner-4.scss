@@ -1,0 +1,259 @@
+@use '../../utils' as *;
+/*----------------------------------------*/
+/*  9.3 banner Style 4
+/*----------------------------------------*/
+
+.banner-4 {
+    background-repeat: no-repeat;
+    border-radius: 40px 40px 0px 0px;
+    margin-top: -60px;
+    overflow: hidden;
+    background-position: top center;
+
+    &__space {
+        padding-top: 214px;
+
+        @media #{$md} {
+            padding-top: 150px;
+        }
+        @media #{$sm, $xs} {
+            padding-top: 120px;
+        }
+    }
+
+    .container {
+        position: relative;
+    }
+
+    &__left-bg {
+        width: 462px;
+        height: 462px;
+        position: absolute;
+        border-radius: 462px;
+        left: -406px;
+        top: -80px;
+        background: rgba(81, 254, 0, 0.70);
+        filter: blur(315px);
+    }
+    &__right-bg {
+        width: 462px;
+        height: 462px;
+        position: absolute;
+        right: -272px;
+        top: 234px;
+        border-radius: 462px;
+        background: rgba(0, 193, 254, 0.70);
+        filter: blur(315px);
+    }
+
+    &__left-box {
+        width: 330px;
+        height: 330px;
+        top: 215px;
+        @include border-radius(500px);
+        border: 1px dashed rgba(3, 6, 17, 0.20);
+        position: absolute;
+        left: -200px;
+
+        @media #{$lg, $md, $sm, $xs} {
+            display: none;
+        }
+
+        &__media {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            @include border-radius(6px);
+            background: var(--rr-common-white);
+            box-shadow: 0px 4px 13px 0px rgba(3, 6, 17, 0.20);
+
+            &.item-1 {
+                margin-left: 235px;
+            }
+            &.item-2 {
+                margin-top: 80px;
+                margin-left: -25px;
+            }
+            &.item-3 {
+                margin-top: 90px;
+                margin-left: 245px;
+            }
+
+            img {
+                width: auto;
+            }
+        }
+    }
+    &__right-box {
+        width: 330px;
+        position: absolute;
+        right: -241px;
+        height: 330px;
+        top: 100px;
+        @include border-radius(500px);
+        border: 1px dashed rgba(3, 6, 17, 0.20);
+
+        @media #{$lg, $md, $sm, $xs} {
+            display: none;
+        }
+
+        &__media {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            @include border-radius(6px);
+            background: var(--rr-common-white);
+            box-shadow: 0px 4px 13px 0px rgba(3, 6, 17, 0.20);
+
+            &.item-1 {
+                margin-left: 140px;
+                margin-top: -25px;
+            }
+            &.item-2 {
+                margin-top: 180px;
+                margin-left: -5px;
+            }
+            &.item-3 {
+                margin-top: -40px;
+                margin-left: 285px;
+            }
+
+            img {
+                width: auto;
+            }
+        }
+    }
+
+    &__content {
+        max-width: 940px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+
+        &__title {
+            font-size: 90px;
+            line-height: 106px;
+            font-weight: var(--rr-fw-bold);
+            font-family: var(--rr-ff-body2);
+            text-align: center;
+
+            @media #{$lg} {
+                font-size: 85px;
+                line-height: 100px;
+            }
+            @media #{$md} {
+                font-size: 60px;
+                line-height: 70px;
+            }
+            @media #{$sm} {
+                font-size: 45px;
+                line-height: 50px;
+            }
+            @media #{$xs} {
+                font-size: 27px;
+                line-height: 40px;
+            }
+            .subtitle {
+                font-family: var(--rr-ff-serif);
+                font-style: italic;
+                font-weight: var(--rr-fw-regular);
+              }
+              .highlighter-1 {
+                position: relative;
+                z-index: 2;
+                
+                img {
+                  margin-top: 55px;
+                  width: 28px;
+
+                  @media #{$sm, $xs} {
+                    margin-top: 20px;
+                }
+                }
+              }
+          
+              .highlighter {
+                
+                svg {
+                  right: 20px;
+                  position: absolute;
+                  bottom: 6px;
+                  z-index: -1;
+                  animation: rrdevshighlighter 3s linear infinite;
+                }
+              }
+        }
+
+        P {
+            opacity: 0.6;
+            margin-top: 25px;
+            max-width: 786px;
+            font-size: 18px;
+            line-height: 26px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 45px;
+            color: var(--rr-text-body2);
+            font-weight: var(--rr-fw-medium);
+        }
+
+        .rr-btn__theme {
+            @include border-radius(6px);
+            padding: 14px 35.5px;
+            .btn-wrap {
+                span {
+                    gap: 6px;
+                    font-size: 16px;
+                    font-family: var(--rr-ff-body2);
+                    font-weight: var(--rr-fw-bold);
+                }
+            }
+
+            &:hover {
+                
+                .btn-wrap {
+                    .text-two {
+                       svg [stroke="white"] {
+                        stroke: var(--rr-text-body2);
+                       }
+                    }
+                }
+            }
+        }
+    }
+
+    &__media {
+        position: relative;
+        margin-left: 105px;
+        margin-top: 36px;
+
+        img {
+            width: auto;
+            z-index: 1;
+            position: relative;
+
+            @media #{$lg, $md, $sm, $xs} {
+                width: 100%;
+            }
+        }
+
+        &-shape {
+            
+            img {
+                position: absolute;
+                left: -40px;
+                z-index: -1;
+                top: 30px;
+                width: auto;
+                @media #{$lg, $md, $sm, $xs} {
+                    width: 100%;
+                }
+                
+            }
+        }
+    }
+}

@@ -1,0 +1,30 @@
+/.phpunit.cache
+/node_modules
+
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+/storage/app/admin_category_notes/*.json  # Bu satırı ekleyin
+!/storage/app/admin_category_notes/.gitkeep  # Klasörü korumak için
+
+.env
+.env.backup
+.env.production
+.phpunit.result.cache
+
+docker-compose.override.yml
+
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+/.fleet
+/.idea
+/.vscode
+
+!/public/assets
+!/public/assets/*
+/public/css
+/public/js

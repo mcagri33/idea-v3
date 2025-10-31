@@ -1,0 +1,186 @@
+@use "../../utils" as *;
+
+/*----------------------------------------*/
+/* 10.1 hr-operation
+/*----------------------------------------*/
+
+.hr-operation {
+
+    &__top-shape {
+        position: absolute;
+        top: 64px;
+        right: 152px;
+
+        img {
+            width: auto;
+        }
+    }
+
+    &__bottom-shape {
+        position: absolute;
+        bottom: 77px;
+        right: 94px;
+
+        @media #{$xs} {
+           display: none;
+        }
+        img {
+            width: auto;
+        }
+    }
+
+    &__bg-1 {
+        width: 1133.062px;
+        height: 118.027px;
+        rotate: 32.476deg;
+        background: rgba(95, 252, 40, 0.30);
+        filter: blur(200px);
+        position: absolute;
+        top: 40%;
+        left: -20%;
+    }
+
+    &__bg-2 {
+        width: 1133.062px;
+        height: 118.027px;
+        transform: rotate(-29.437deg);
+        background: rgba(0, 163, 255, 0.20);
+        filter: blur(200px);
+        position: absolute;
+        top: 40%;
+        left: -20%;
+    }
+    &__content {
+        @include border-radius(20px);
+        background: #E6F2FE;
+        padding: 85px 79px;
+        margin-bottom: 30px;
+        position: relative;
+        overflow: hidden;
+
+        @media #{$md, $sm} {
+            padding: 60px 30px;
+        }
+        @media #{$xs} {
+            padding: 40px 20px;
+        }
+        
+        &-icon {
+            img {
+                width: auto;
+            }
+        }
+        .rr-btn__theme-6 {
+            padding: 15px 38px;
+        }
+    }
+
+    .has--line {
+        position: relative;
+        &::before {
+            content: "";
+            height: 22px;
+            position: absolute;
+            bottom: -305px;
+            left: -50px;
+            background-color: #E8FDF3;
+            width: 76.122px;
+            -webkit-transform: rotate(-47deg);
+            transform: rotate(-47deg);
+
+            @media #{$md} {
+                bottom: -290px;
+            }
+            @media #{$sm, $xs} {
+                display: none;
+            }
+        }
+    }
+
+    &__item {
+        overflow: hidden;
+        position: relative;
+        padding: 40px 40px;
+        margin-bottom: 20px;
+        background: #E8FDF3;
+        @include border-radius(10px);
+
+        &.item-1 {
+            background-color: #ECF7FF;
+            .hr-operation__item-text {
+                h2 {
+                    .plus {
+                        margin-left: -15px;
+                        color: #356DF1;
+                    }
+                }
+            }
+        }
+        &.item-2 {
+            position: relative;
+            .hr-operation__item-text {
+                h2 {
+                    .plus {
+                        color: #25907A;
+                    }
+                }
+            }
+        }
+        &.item-4 {
+            background-color: #FDE5F8;
+            .hr-operation__item-text {
+                h2 {
+                    .plus {
+                        color: #CD26A8;
+                    }
+                }
+            }
+        }
+
+        &-shape {
+            position: absolute;
+            right: -200px;
+            top: -30px;
+        }
+
+        &-icon {
+            img {
+                width: auto;
+            }
+        }
+        
+        &-text {
+            h2 {
+                font-size: 64px;
+                line-height: 40px; 
+                font-style: normal;
+                color: var(--rr-text-body2);
+                font-weight: var(--rr-fw-bold);
+                font-family: var(--rr-ff-roboto);
+
+                @media #{$md, $sm} {
+                    font-size: 50px;
+                    line-height: 34px;
+                }
+                @media #{$xs} {
+                    font-size: 30px;
+                    line-height: 34px;
+                }
+
+                .odometer  {
+                    font-family: var(--rr-ff-roboto);
+                }
+
+                .plus {
+                    color: #25907A;
+                }
+            }
+
+            p {
+                text-transform: uppercase;
+                font-weight: var(--rr-fw-medium);
+                color: var(--rr-text-body2);
+            }
+        }
+    }
+}

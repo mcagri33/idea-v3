@@ -1,0 +1,98 @@
+@use "../../utils" as *;
+
+/*----------------------------------------*/
+/* 10.1 testimonial
+/*----------------------------------------*/
+
+.ai-brand {
+    &__wrapper {
+        rotate: -2deg;
+        padding: 110px 0 150px;
+
+        @media #{$md} {
+            padding: 80px 0 80px;
+        }
+        @media #{$sm,$xs} {
+            padding: 70px 0 70px;
+        }
+    }
+
+    .carouselTicker {
+        margin: 0;
+        rotate: 0deg;
+        &__list {
+            margin: 0;
+            padding: 15px 0;
+            list-style: none;
+            align-items: center;
+            justify-content: center;
+            gap: 26px;
+            
+            
+            li {
+                gap: 14px;
+                float: left;
+                display: flex;
+                padding: 7px 41px 7px 12px;
+            }
+        }
+    }
+    
+    &__item {
+        @include border-radius(6px);
+        background: var(--rr-common-white);
+        box-shadow: 0px 4px 36px 0px rgba(5, 13, 30, 0.10);
+
+        &__icon {
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            border-radius: 4px;
+            justify-content: center;
+
+            &.item-1 {
+                background: rgba(149, 191, 70, 0.14);
+            }
+            &.item-2 {
+                background: rgba(198, 34, 51, 0.10);
+            }
+            &.item-3 {
+                background: rgba(0, 97, 255, 0.08);
+            }
+            &.item-4 {
+                background: rgba(31, 141, 237, 0.08);
+            }
+            &.item-5 {
+                background: rgba(46, 182, 125, 0.10);
+            }
+            &.item-6 {
+                background: rgba(30, 30, 30, 0.08);
+            }
+            &.item-7 {
+                background: rgba(22, 184, 162, 0.10);
+            }
+            &.item-8 {
+                background: rgba(52, 163, 83, 0.10);
+            }
+
+            img {
+                width: auto;
+            }
+        }
+
+        &__text {
+            h3 {
+                font-family: var(--rr-ff-urbanist);
+                margin-bottom: 5px;
+            }
+
+            p {
+                opacity: 0.6;
+                color: #030611;
+                font-weight: 500;
+                font-family: var(--rr-ff-urbanist);
+            }
+        }
+    }
+}

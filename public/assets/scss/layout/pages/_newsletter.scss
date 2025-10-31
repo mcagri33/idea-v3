@@ -1,0 +1,101 @@
+@use "../../utils" as *;
+
+.newsletter {
+
+    &__wrapper {
+        display: flex;
+        max-width: 880px;
+        margin-left: auto;
+        padding: 22px 50px;
+        align-items: center;
+        background: #0F3EAE;
+        justify-content: space-between;
+        border-radius: 0px 10px 0px 0px;
+        @media #{$lg, $md, $sm, $xs} {
+            border-radius: 10px 10px 0px 0px;
+            max-width: 100%;
+        }
+        @media #{$md, $sm, $xs} {
+            flex-direction: column;
+            gap: 20px;
+            padding: 20px;
+        }
+        &__left {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+
+            .icon {
+                img {
+                    width: auto;
+
+                    @media #{$md, $sm, $xs} {
+                        width: 100%;
+                    }
+                }
+            }
+
+            .text {
+                h3 {
+                    color: var(--rr-common-white);
+                    font-size: 24px;
+                    font-weight: 600;
+                    line-height: 30px;
+                    text-transform: uppercase;
+                    font-family: var(--rr-ff-roboto);
+
+                    @media #{$xs} {
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+
+    }
+    &__subscribe {
+        display: flex;
+        width: 382px;
+        align-items: center;
+        border-radius: 0px 6px 6px 0px;
+
+        @media #{$xs} {
+            flex-direction: column;
+            width: 100%;
+            gap: 10px;
+        }
+
+        input {
+            height: 46px;
+            width: 237px;
+            border: none;
+            border-radius: 6px 0px 0px 6px;
+            background-color: var(--rr-common-white);
+
+            @media #{$xs} {
+                width: 100%;
+                @include border-radius(6px);
+            }
+        }
+
+        .rr-btn {
+            border: none;
+            padding: 13px 32px;
+            max-width: 145px;
+            background: #030611;
+            border-radius: 0px 6px 6px 0px;
+
+            @media #{$xs} {
+                width: 100%;
+                @include border-radius(6px);
+            }
+
+            .btn-wrap {
+                span {
+                    display: flex;
+                    gap: 8px;
+                    color: var(--rr-common-white);
+                }
+            }
+        }
+    }
+}

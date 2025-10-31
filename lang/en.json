@@ -1,0 +1,26 @@
+{
+  "Home": "Home",
+  "Error": "Error",
+  "Login": "Login",
+  "Register": "Register",
+  "User" : "User",
+  "Add" : "Add",
+  "Name" : "Name",
+  "Role" : "Role",
+  "Status" : "Status",
+  "Action" : "Action",
+  "Active" : "Active",
+  "Passive" : "Passive",
+  "Edit" : "Edit",
+  "Delete" : "Delete",
+  "Email" : "Email",
+  "Phone" : "Phone",
+  "Password" : "Password",
+  "Update" : "Update",
+  "Role_Name" : "Role Name",
+  "Permission" : "Permission",
+  "All" : "All",
+  "Description" : "Description",
+  "File_Path" : "File Add"
+
+}

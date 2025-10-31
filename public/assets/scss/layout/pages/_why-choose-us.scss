@@ -1,0 +1,118 @@
+@use "../../utils" as *;
+
+/*----------------------------------------*/
+/*  10.4 why-choose-us__item
+/*----------------------------------------*/
+.why-choose-us {
+    
+    &__shape {
+        &-1, &-2 {
+            content: "";
+            z-index: -1;
+            position: absolute;
+        }
+        
+        &-1 {
+            left: -396px;
+            width: 599px;
+            bottom: -699px;
+            height: 599px;
+            background: #EBFCF9;
+            filter: blur(200px);
+        }
+        
+        &-2 {
+            width: 666px;
+            height: 666px;
+            background: #F3EBFF;
+            filter: blur(200px);
+            right: -378px;
+            bottom: -954px;
+        }
+    }
+    
+    &__background {
+        position: absolute;
+        left: -125px;
+        top: -94px;
+        z-index: -1;
+    }
+    
+    &__item {
+        
+        &-icon {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            background: var(--rr-theme-primary2);
+            box-shadow: 0px 6px 6px rgba(1, 9, 21, 0.14);
+            @include border-radius(500px);
+            margin-left: auto;
+            margin-right: auto;
+            
+            img {
+                width: auto;
+            }
+        }
+        
+        &-arrow-bottom {
+            margin-top: -30px;
+            display: flex;
+            justify-content: center;
+            
+            img {
+                width: auto;
+            }
+        }
+        
+        &__content {
+            @include border-radius(6px);
+            background-color: var(--rr-common-white);
+            padding: 41px 44px 41px;
+            box-shadow: 0px 20px 50px rgba(13, 18, 30, 0.1);
+            
+            @media #{$sm,$xs} {
+                padding: 30px 25px;
+            }
+            
+            .step {
+                font-family: var(--rr-ff-roboto);
+                font-style: normal;
+                font-weight: 500;
+                font-size: 15px;
+                line-height: 18px;
+                color: var(--rr-common-white);
+                padding: 3px 12px;
+                background: var(--rr-section-3);
+                @include border-radius(4px);
+            }
+            
+            p {
+                font-style: normal;
+                font-weight: 400;
+                font-size: 15px;
+                line-height: 26px;
+                text-align: center;
+            }
+        }
+    }
+    
+    &__item-bar {
+        top: 40px;
+        max-width:100%;
+        left: 50%;
+        @include transform(translate(-50%, 0));
+        position: absolute;
+        width: 1130px;
+        height: 1px;
+        border: 1px dashed rgba(1, 9, 21, 0.14);
+        
+        @media #{$lg, $md, $sm, $xs} {
+            display: none;
+        }
+    }
+}

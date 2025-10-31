@@ -1,0 +1,142 @@
+{
+  "menu": [
+    {
+      "menuHeader": "Ana Menü"
+    },
+
+    {
+      "url": "/panel/",
+      "name": "Genel Durum - Dashboard",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "dashboard"
+    },
+	  
+	  
+    {
+      "url": "/panel/document-status-user",
+      "name": "Evrak Yükleme Raporu",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "evrak-durumu"
+    },
+
+	    {
+      "url": "/panel/myAssignment",
+      "name": "Denetim İlave Belge İstekleri ( to do list)",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "user.assignments"
+    },
+	  
+    {
+      "url": "/user",
+      "name": "Kullanıcılar",
+      "icon": "menu-icon tf-icons ti ti-user",
+      "slug": "user"
+    },
+    {
+      "url": "/roles",
+      "name": "Roller",
+      "icon": "menu-icon tf-icons ti ti-user",
+      "slug": "roles"
+    },
+    {
+      "name": "Kategori Ayarları",
+      "icon": "menu-icon tf-icons ti ti-category",
+      "slug": "document-category",
+      "submenu": [
+        {
+          "url": "/panel/category",
+          "name": "Kategori Listele",
+          "slug": "castle.category.index"
+        },
+        {
+          "url": "/panel/category/create",
+          "name": "Kategori Ekle",
+          "slug": "castle.category.add"
+        },
+		  {
+      "url": "/panel/category/menu",
+      "name": "Kategori Menü",
+      "icon": "menu-icon tf-icons ti ti-menu",
+      "slug": "castle.category.menu"
+    }
+      ]
+    },
+
+    
+
+    {
+      "url": "/panel/user-log",
+      "name": "Evrak Hareketleri (log)",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "user-log"
+    },
+	  
+	     {
+      "url": "/panel/documentCheck",
+      "name": "Evrak Izleme",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "document.check"
+    },
+
+	   {
+      "url": "/panel/user-doc",
+      "name": "Yüklenen Evraklar",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "user-doc"
+    },
+	  
+    {
+      "url": "/panel/admin-log",
+      "name": "Evrak Hareketleri (Log)",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "admin-log"
+    },
+
+   
+	  
+	  {
+      "url": "/panel/document-status",
+      "name": "Yüklenen Evraklar Raporu",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "document-status"
+    },
+
+    {
+      "menuHeader": "Raporlar"
+    },
+
+    {
+      "url": "/panel/user-to-document",
+      "name": "Bağımsız Denetim Raporu",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "user-to-document"
+    },
+	  
+	{
+      "url": "/panel/general-note",
+      "name": "Denetim Durumlari",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "general.note"
+    },
+
+    {
+      "url": "/panel/bagimsiz-denetim-raporu-user",
+      "name": "Bağımsız Denetci Raporları",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "bagimsiz-denetim-raporu-user"
+    },
+	  
+	
+
+    {
+      "menuHeader": "Evrak İşlemleri"
+    },
+	  
+	  {
+      "url": "/panel/assignment",
+      "name": "Gorev Ata",
+      "icon": "menu-icon tf-icons ti ti-plus",
+      "slug": "assignments.index"
+    }
+  ]
+}

@@ -1,0 +1,306 @@
+@use "../../utils" as *;
+
+
+.pricing-6 {
+    &__toggle {
+        &-button {
+            z-index: 1;
+            display: flex;
+            position: relative;
+            align-items: center;
+            justify-content: center;
+
+            input,
+            label {
+                display: inline-block;
+                vertical-align: middle;
+                margin: 10px 0;
+            }
+        }
+    }
+
+    &__toggler {
+        font-size: 15px;
+        margin: 0 14px;
+        font-weight: 600;
+        color: rgb(3, 6, 17);
+        text-transform: uppercase;
+        font-family: var(--rr-ff-urbanist);
+
+        &.active {
+            color: #356df1;
+        }
+    }
+
+    &__toggle {
+        position: relative;
+        display: inline-block;
+        width: 70px;
+        height: 30px;
+
+        input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+
+            &:checked+.switcher::before {
+                transform: translateX(32px);
+            }
+        }
+
+        & .switcher {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 4px;
+            border: 1px solid rgba(3, 6, 17, 0.14);
+            transform: translate(0px, 0px);
+            transition: .6s ease;
+
+            &::before {
+                content: "";
+                width: 26px;
+                height: 20px;
+                top: 4px;
+                left: 5px;
+                transition: .4s;
+                border-radius: 2px;
+                position: absolute;
+                background-color: rgb(53, 109, 241);
+                box-shadow: 0px 2px 2px rgba(30, 30, 30, 0.2);
+            }
+        }
+    }
+
+    &__icon {
+        img {
+            width: inherit;
+            height: 93px;
+        }
+    }
+
+    &__plan {
+        background: rgba(3, 6, 17, 0.08);
+        border-radius: 10px 10px 0px 0px;
+        padding: 10px 0;
+        margin: 0 -40px;
+        margin-bottom: 30px;
+
+        span {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--rr-text-body2);
+            font-family: var(--rr-ff-urbanist);
+
+            svg {
+                margin-right: 4px;
+            }
+        }
+    }
+
+    &__pricing {
+        &__body {
+            ul {
+                list-style: none;
+
+                li {
+                    font-size: 15px;
+                    font-weight: 500;
+                    color: var(--rr-text-body2);
+                    margin-bottom: 18px;
+                    padding-left: 12px;
+                    position: relative;
+                    font-family: var(--rr-ff-urbanist);
+
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        width: 6px;
+                        height: 6px;
+                        background-color: rgb(3, 217, 88);
+                        border-radius: 100%;
+                        left: 0;
+                        top: 8px;
+                    }
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    &__card {
+        padding: 0 39px 55px 40px;
+        border: 1px solid rgba(3, 6, 17, 0.1);
+        border-radius: 10px;
+        overflow: hidden;
+
+        @media #{$xs} {
+            padding: 0 30px 35px 30px;
+        }
+
+        &__price {
+            h2 {
+                span {
+                    font-size: 50px;
+                    color: var(--rr-text-body2);
+                    font-weight: 700;
+                    font-family: var(--rr-ff-urbanist);
+
+                    @media #{$xs} {
+                        font-size: 40px;
+                    }
+
+                    &:last-child {
+                        font-size: 16px;
+                        font-weight: 500;
+                        opacity: .7;
+                        display: block;
+                        line-height: 1;
+                        font-family: var(--rr-ff-urbanist);
+                    }
+                }
+            }
+        }
+
+        &__1 {
+            & .pricing-6 {
+                &__pricing {
+                    &__body {
+                        ul {
+                            li {
+                                &:nth-last-child(-n+3) {
+                                    color: rgb(219, 219, 219);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &__2 {
+            & .pricing-6 {
+                &__pricing {
+                    &__body {
+                        ul {
+                            li {
+                                &:nth-last-child(-n+2) {
+                                    color: rgb(219, 219, 219);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        @media #{$md,$sm,$xs} {
+            margin-bottom: 30px;
+        }
+    }
+
+    &__tag {
+        text-align: center;
+
+        span {
+            background: linear-gradient(141.99deg, #874EDD 17.74%, #F911F0 118.75%);
+            color: var(--rr-common-white);
+            font-size: 15px;
+            font-weight: 600;
+            padding: 1px 10px;
+            margin-top: 22px;
+            margin-bottom: 35px;
+            position: relative;
+            display: inline-block;
+        }
+
+        &__circle {
+            width: 8px;
+            height: 8px;
+            background: var(--rr-common-white);
+            border-radius: 100%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: -4px;
+
+            &__2 {
+                left: auto;
+                right: -4px;
+            }
+        }
+    }
+
+    &__price {
+        &__btn {
+            & .rr-btn {
+                background: rgba(3, 6, 17, 0.08);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 6px;
+                color: #030611;
+                font-size: 16px;
+                font-weight: 700;
+                width: 100%;
+                padding: 14px 0;
+                margin-bottom: 45px;
+                font-family: var(--rr-ff-urbanist);
+
+                &:before {
+                    background: var(--rr-text-body2);
+                }
+            }
+        }
+    }
+
+    &__offer {
+        right: 36.2%;
+        position: absolute;
+        top: -15px;
+
+        @media #{$lg} {
+            right: 31.2%;
+        }
+
+        @media #{$md} {
+            right: 25.2%;
+        }
+
+        @media #{$sm} {
+            right: 16.2%;
+        }
+
+        @media #{$xs} {
+            right: -3.8%;
+        }
+
+        span {
+            background-color: rgb(210, 9, 69);
+            border-radius: 3px;
+            color: var(--rr-common-white);
+            font-size: 15px;
+            font-weight: 600;
+            display: inline-block;
+            padding: 0px 10px;
+            position: relative;
+        }
+    }
+
+    &__triangle {
+        width: 0px;
+        height: 0px;
+        border-style: solid;
+        border-width: 0 0 25px 25px;
+        border-color: transparent transparent #D30943 transparent;
+        transform: rotate(63deg);
+        position: absolute;
+        top: 0px;
+        left: 5px;
+        z-index: -1;
+    }
+}

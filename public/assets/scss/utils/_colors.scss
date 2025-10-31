@@ -1,0 +1,43 @@
+$colors: (
+  common: (
+    "white": #FFFFFF,
+    "black": #000000,
+    "placeholder": #4A5764,
+    "selection": #3C66FA,
+  ),
+  body: (
+    "primary": #ffffff,
+  ),
+  theme: (
+    "primary": #3C66FA,
+    "primary1": #F3B351,
+    "primary2": #7341F1,
+    "primary3": #FECE00,
+  ),
+  heading: (
+    "primary": #010915,
+    "secondary": #0B1728,
+  ),
+  text: (
+    "body": rgba(1, 9, 21, 0.60),
+    "body2": #030611,
+    "primary": #010915,
+    "primary1": #23232B,
+    "primary2": #818181,
+    "primary3": #84858D,
+  ),
+  shadow: (
+      "primary": 0px 20px 50px 0px rgba(13, 18, 30, 0.10),
+  ),
+  border: (
+    "primary": 1px solid rgba(1, 9, 21, 0.14),
+  ),
+  section: (
+    "1": #E9EBF7,
+    "2": #F5F5F5,
+    "3": #F14141,
+  ),
+  menu: (
+    "primary": #888899,
+  )
+);
