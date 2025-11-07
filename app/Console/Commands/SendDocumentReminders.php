@@ -63,6 +63,9 @@ class SendDocumentReminders extends Command
 
         $this->info("🔍 {$customers->count()} müşteri kontrol ediliyor...\n");
 
+        $bar = $this->output->createProgressBar($customers->count());
+        $bar->start();
+
         foreach ($customers as $customer) {
             $missingCategories = [];
 
@@ -80,6 +83,7 @@ class SendDocumentReminders extends Command
             if (count($missingCategories) === 0) {
                 $usersWithCompleteDocs++;
                 $this->comment("⏭️  {$customer->name} - Tüm belgeler tamamlanmış");
+                $bar->advance();
                 continue;
             }
 
@@ -94,7 +98,11 @@ class SendDocumentReminders extends Command
             $usersWithMissingDocs++;
             $this->info("✅ {$customer->name} ({$customer->email})");
             $this->comment('   └─ ' . count($missingCategories) . ' eksik kategori');
+            $bar->advance();
         }
+
+        $bar->finish();
+        $this->newLine(2);
 
         if (! empty($remindersSent)) {
             $this->newLine();
