@@ -17,8 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
   ->withSchedule(function (Schedule $schedule) {
     $schedule->command('documents:send-reminders')
         ->cron('0 9 */10 * *') // Her 10 günde bir, saat 09:00'da
-        ->timezone('Europe/Istanbul')
-        ->emailOutputOnFailure(config('mail.from.address'));
+        ->timezone('Europe/Istanbul');
 })
 
   ->withMiddleware(function (Middleware $middleware) {

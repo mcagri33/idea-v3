@@ -28,6 +28,7 @@ class SendDocumentReminders extends Command
      */
     public function handle(): int
     {
+        try { 
         $year = $this->option('year') ?? now()->year - 1;
         $currentYear = now()->year;
 
@@ -132,7 +133,17 @@ class SendDocumentReminders extends Command
             'reminders_sent' => count($remindersSent),
         ]);
 
-        return self::SUCCESS;
+        return self::SUCCESS; } 
+        catch (\Exception $exception) { 
+             $this->sendErrorReportToAdmins($exception);
+        
+            Log::error('Document reminders command failed', [
+                'error' => $exception->getMessage(),
+                'trace' => $exception->getTraceAsString(),
+            ]);
+            
+            return self::FAILURE; 
+        }
     }
 
     protected function sendReminderToCustomer(User $customer, array $missingCategories, int $year): void
@@ -175,4 +186,27 @@ class SendDocumentReminders extends Command
             $this->error('❌ Admin raporu gönderilemedi: ' . $exception->getMessage());
         }
     }
+
+    protected function sendErrorReportToAdmins(\Exception $exception): void
+{
+    try {
+        $admins = User::role('Admin')
+            ->where('status', 1)
+            ->get();
+
+        if ($admins->isEmpty()) {
+            return;
+        }
+
+        foreach ($admins as $admin) {
+            Mail::to($admin->email)->send(
+                new \App\Mail\CommandErrorMail($exception)
+            );
+        }
+    } catch (\Exception $e) {
+        Log::error('Error report mail gönderilemedi', [
+            'error' => $e->getMessage(),
+        ]);
+    }
+}
 }
