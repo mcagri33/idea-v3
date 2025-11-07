@@ -66,16 +66,21 @@ class SendDocumentReminders extends Command
         $bar = $this->output->createProgressBar($customers->count());
         $bar->start();
 
+        $documentsByUserAndCategory = Document::query()
+            ->where('file_year', $year)
+            ->whereIn('user_id', $customers->pluck('id'))
+            ->get()
+            ->groupBy(function (Document $document) {
+                return $document->user_id . ':' . $document->category_id;
+            });
+
         foreach ($customers as $customer) {
             $missingCategories = [];
 
             foreach ($categories as $category) {
-                $hasDocument = Document::where('user_id', $customer->id)
-                    ->where('category_id', $category->id)
-                    ->where('file_year', $year)
-                    ->exists();
+                $key = $customer->id . ':' . $category->id;
 
-                if (! $hasDocument) {
+                if (! $documentsByUserAndCategory->has($key)) {
                     $missingCategories[] = $category;
                 }
             }
