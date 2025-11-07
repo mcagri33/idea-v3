@@ -8,9 +8,8 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Collection;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
-class DocumentReminderMail extends Mailable implements ShouldQueue
+class DocumentReminderMail extends Mailable
 {
     use Queueable, SerializesModels;
 
