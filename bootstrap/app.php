@@ -13,13 +13,14 @@ return Application::configure(basePath: dirname(__DIR__))
     commands: __DIR__ . '/../routes/console.php',
     health: '/up',
   )
+
   ->withSchedule(function (Schedule $schedule) {
     $schedule->command('documents:send-reminders')
-      ->everyTenDays()
-      ->at('09:00')
-      ->timezone('Europe/Istanbul')
-      ->emailOutputOnFailure(config('mail.from.address'));
-  })
+        ->cron('0 9 */10 * *') // Her 10 günde bir, saat 09:00'da
+        ->timezone('Europe/Istanbul')
+        ->emailOutputOnFailure(config('mail.from.address'));
+})
+
   ->withMiddleware(function (Middleware $middleware) {
     $middleware->web(LocaleMiddleware::class);
     $middleware->alias([
