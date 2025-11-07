@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -12,6 +13,13 @@ return Application::configure(basePath: dirname(__DIR__))
     commands: __DIR__ . '/../routes/console.php',
     health: '/up',
   )
+  ->withSchedule(function (Schedule $schedule) {
+    $schedule->command('documents:send-reminders')
+      ->everyTenDays()
+      ->at('09:00')
+      ->timezone('Europe/Istanbul')
+      ->emailOutputOnFailure(config('mail.from.address'));
+  })
   ->withMiddleware(function (Middleware $middleware) {
     $middleware->web(LocaleMiddleware::class);
     $middleware->alias([
