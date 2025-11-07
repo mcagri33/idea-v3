@@ -471,7 +471,7 @@ class DocumentController extends Controller
 	public function showDocumentStatus(Request $request)
 	{
     $userId = $request->input('user_id');
-    $year = $request->input('year', now()->year);
+    $year = $request->input('year', now()->year - 1);
 
     $users = User::role('customer')->orderBy('name', 'asc')->get();
 
@@ -538,7 +538,7 @@ class DocumentController extends Controller
 	public function showDocumentStatusForUser(Request $request)
 {
     $user = auth()->user();
-    $year = $request->input('year', now()->year);
+    $year = $request->input('year', now()->year - 1);
 
     $categories = DocumentCategory::withCount([
         'documents as approved_count' => function ($q) use ($user, $year) {
@@ -743,9 +743,7 @@ private function getAdminCategoryNotes(User $user, $year)
 // generalNoteShow metodunu güncelleyin
 public function generalNoteShow(Request $request, User $user)
 {
-    $year = $request->get('year', now()->year);
-
-    // Admin notlarını JSON dosyasından oku
+    $year = $request->input('year', now()->year - 1);
     $adminNotes = $this->getAdminCategoryNotes($user, $year);
 
     $categories = DocumentCategory::withCount([
@@ -763,8 +761,7 @@ public function generalNoteShow(Request $request, User $user)
 
 public function exportGeneralNotePdf(Request $request, User $user)
 {
-    $year = $request->get('year', now()->year);
-    
+  $year = $request->input('year', now()->year - 1);    
     // Admin notlarını JSON dosyasından oku
     $adminNotes = $this->getAdminCategoryNotes($user, $year);
     
@@ -800,8 +797,8 @@ public function sendGeneralNoteMail(Request $request, User $user)
         'message' => 'required|string',
     ]);
 
-    $year = $request->get('year', now()->year);
-
+    $year = $request->get('year', now()->year - 1);
+    
     try {
         Mail::to($user->email)->send(new GeneralNoteReminderMail($user, $year, $request->subject, $request->message));
         

@@ -1,7 +1,0 @@
-node_modules/
-.env
-utils/memory/firms/*.json
-utils/memory/feedbacks.json
-*.log
-.DS_Store
-

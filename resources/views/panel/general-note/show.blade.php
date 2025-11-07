@@ -31,8 +31,8 @@
   <form action="{{ url()->current() }}" method="GET" class="d-flex my-4">
     <label for="year" class="me-2">Yıl:</label>
     <select name="year" id="year" class="form-select w-auto" onchange="this.form.submit()">
-      @foreach (range(now()->year, now()->year - 10) as $yr)
-        <option value="{{ $yr }}" {{ $year == $yr ? 'selected' : '' }}>{{ $yr }}</option>
+    @foreach (range(now()->year - 1, now()->year - 11) as $yr)
+    <option value="{{ $yr }}" {{ $year == $yr ? 'selected' : '' }}>{{ $yr }}</option>
       @endforeach
     </select>
   </form>

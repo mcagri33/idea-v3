@@ -13,7 +13,7 @@
       <div class="input-group">
         <label class="me-2" for="year">Yıl:</label>
         <select name="year" id="year" class="form-select" onchange="this.form.submit()">
-          @foreach (range(now()->year, now()->year - 10) as $yr)
+          @foreach (range(now()->year - 1, now()->year - 11) as $yr)
             <option value="{{ $yr }}" {{ $year == $yr ? 'selected' : '' }}>{{ $yr }}</option>
           @endforeach
         </select>
