@@ -93,7 +93,6 @@ class DocumentController extends Controller
           now()
         );
 
-	$this->notifyBot($document);
 
       }
 
