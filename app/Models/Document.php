@@ -36,4 +36,11 @@ class Document extends Model
   {
     return $this->hasMany(DocumentLog::class);
   }
+
+  public function lastDownloadLog()
+  {
+    return $this->hasOne(DocumentLog::class)
+      ->where('action', 'download')
+      ->latestOfMany();
+  }
 }

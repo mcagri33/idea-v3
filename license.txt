@@ -1,0 +1,55 @@
+IDEADOCS / FİLAMENT YÖNETİM PANELİ LİSANS BEYANİ
+=================================================
+
+**Ürün Adı:** İdeadocs İç Yönetim Platformu (Laravel & Filament 3.x)  
+**Kapsam:** Muhasebe / Denetim firması iç kullanımına yönelik yönetim paneli, belge takip sistemi ve hatırlatma otomasyonları  
+**Lisans Sahibi:** __________________________________________  
+**Kuruluş / Firma:** __________________________________________  
+**Adres:** __________________________________________  
+**İletişim:** __________________________________________  
+
+----------------------------------------------------------------------
+
+1. KAYNAK KOD MÜLKİYETİ  
+   - Bu projede yer alan tüm özel yazılım bileşenleri (Laravel controller, Filament resource ve panel yapılandırmaları, belge hatırlatma komutları, e-posta şablonları, cron/scheduler yapılandırmaları vb.) yukarıda bilgileri yer alan lisans sahibine aittir.  
+   - Sistem, IDEADOCS markası altında veya iç isimlendirmeyle kullanılmak üzere özelleştirilmiştir. Üçüncü kişilere satılamaz, kiralanamaz veya yeniden dağıtılamaz.  
+
+2. ÜÇÜNCÜ TARAF BİLEŞENLER  
+   - Laravel Framework (MIT Lisansı)  
+   - Filament Admin Panel (MIT Lisansı)  
+   - Spatie Laravel Permission (MIT Lisansı)  
+   - Barryvdh DomPDF, Maatwebsite Excel vb. açık kaynak paketler (ilgili MIT/BSD/GPL lisansları geçerlidir)  
+   - ThemeForest üzerinden temin edilen Vue tabanlı front-end şablonu **bu proje kapsamında yalnızca yönetici paneline görsel referans olarak kullanılmıştır**. ThemeForest lisans sertifikası ve satın alma kodu ile lisans sahibinin kullanım hakkı güvence altındadır.  
+   - ThemeForest lisans bilgileri ayrı bir PDF / sertifika dosyası olarak saklanmaktadır ve istenildiğinde ibraz edilecektir.  
+
+3. KULLANIM KOŞULLARI  
+   - Sistem yalnızca lisans sahibinin iç operasyonlarında (müşteri belge takibi, denetim süreci yönetimi, hatırlatma otomasyonu ve raporlama) kullanılmak üzere lisanslanmıştır.  
+   - Kod tabanı üzerinde yapılacak tüm türev çalışmalar lisans sahibine aittir; geliştirici yalnızca hizmet sağlayıcıdır.  
+   - Sistemde yer alan kullanıcı verileri, müşteri belgeleri ve ticari içerikler lisans sahibinin kontrolündedir; geliştirici taraf bu veriler üzerinde herhangi bir hak iddia etmez.  
+
+4. DESTEK VE GÜNCELLEME  
+   - Laravel sürüm yükseltmeleri, Filament güncellemeleri ve güvenlik yamaları lisans sahibinin talebine göre ayrıca fiyatlandırılacaktır.  
+   - SMTP, cron, sunucu yapılandırması gibi devops destekleri proje kapsamı dışındadır; ancak dokümantasyon ve yönlendirme sağlanmıştır.  
+
+5. FERAGATNAME  
+   - Sistem “olduğu gibi” sunulmuştur. Üçüncü taraf servislerden (SMTP sağlayıcıları, hosting şirketi, Plesk vb.) kaynaklanan kesinti ve hatalardan geliştirici sorumlu tutulamaz.  
+   - Gizlilik, KVKK ve ilgili mevzuata uyum sorumluluğu lisans sahibine aittir.  
+
+----------------------------------------------------------------------
+
+**Lisans Onayı**  
+Bu belge, yukarıda tanımlanan yazılımın yalnızca belirtilen firma/kurum tarafından kullanılacağını, kod tabanının üçüncü taraflarla paylaşılmayacağını ve tüm telif haklarının lisans sahibinde bulunduğunu beyan eder.
+
+- **Lisans Sahibi (Yetkili İmza):** __________________________  
+- **Tarih:** ____ / ____ / ______  
+
+----------------------------------------------------------------------
+
+**Ekler (gerektiğinde iliştirilecektir):**  
+1. ThemeForest “License Certificate” (PDF)  
+2. SMTP / Hosting sözleşme bilgileri  
+3. Sunucu kurulumu ve cron yapılandırma notları  
+
+Bu dosya PDF formatına dönüştürülerek resmi lisans belgesi olarak paylaşılabilir.
+
+

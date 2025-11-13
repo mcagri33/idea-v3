@@ -8,6 +8,7 @@ use App\Models\UserDocument;
 use Illuminate\Http\Request;
 use App\Models\DocumentCategory;
 use App\Models\Document;
+use App\Models\DocumentLog;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +17,6 @@ use App\Traits\LogsActivity;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\LogsExport;
 use Barryvdh\DomPDF\Facade\Pdf as PDF;
-use App\Notifications\DocumentStatusChanged;
 use App\Models\DocumentCategoryNote; 
 use App\Models\DocumentAssignment;
 use App\Mail\TaskAssignedMail;
@@ -125,23 +125,53 @@ class DocumentController extends Controller
 
   public function downloadDocument($uuid)
   {
-    $documentQuery = Document::where('uuid', $uuid);
+    try {
+      $documentQuery = Document::where('uuid', $uuid);
 
-    if (!Auth::user()->hasRole('Admin')) {
-      $documentQuery->where('user_id', Auth::id());
+      if (!Auth::user()->hasRole('Admin')) {
+        $documentQuery->where('user_id', Auth::id());
+      }
+
+      $document = $documentQuery->firstOrFail();
+
+      $filePath = Storage::disk('public')->path($document->file_path);
+
+      info("Aranan dosya yolu: {$filePath}");
+
+      if (!Storage::disk('public')->exists($document->file_path)) {
+        return redirect()->back()->with('error', 'Dosya bulunamadı.');
+      }
+
+      // Dosyayı indir
+      $response = response()->download($filePath, basename($document->file_path));
+
+      // İndirme başarılı olduysa log kaydı oluştur
+      try {
+        DocumentLog::create([
+          'document_id' => $document->id,
+          'action' => 'download',
+          'performed_by' => Auth::id(),
+          'note' => 'Dosya indirildi: ' . basename($document->file_path),
+        ]);
+      } catch (\Exception $e) {
+        // Log kaydı oluşturulamazsa, dosya indirme işlemi devam etsin
+        Log::warning('Document download log kaydı oluşturulamadı', [
+          'document_id' => $document->id,
+          'user_id' => Auth::id(),
+          'error' => $e->getMessage()
+        ]);
+      }
+
+      return $response;
+    } catch (\Exception $e) {
+      Log::error('Document download hatası', [
+        'uuid' => $uuid,
+        'user_id' => Auth::id(),
+        'error' => $e->getMessage()
+      ]);
+
+      return redirect()->back()->with('error', 'Dosya indirilirken bir hata oluştu.');
     }
-
-    $document = $documentQuery->firstOrFail();
-
-    $filePath = Storage::disk('public')->path($document->file_path);
-
-    info("Aranan dosya yolu: {$filePath}");
-
-    if (!Storage::disk('public')->exists($document->file_path)) {
-      return redirect()->back()->with('error', 'Dosya bulunamadı.');
-    }
-
-    return response()->download($filePath, basename($document->file_path));
   }
 
 
@@ -167,7 +197,8 @@ class DocumentController extends Controller
 {
     $query = Document::whereHas('user', function ($q) use ($user) {
         $q->where('uuid', $user->uuid);
-    });
+    })  ->with(['category', 'user', 'lastDownloadLog.performedBy']) // Eager loading ekle  
+    ;
 
     // Filtreler
     if ($request->filled('file_year')) {
@@ -247,10 +278,6 @@ class DocumentController extends Controller
             'approved_at' => $newStatus == 1 ? now() : null,
             'file_created_at' => $document->created_at
         ]);
-
-        $user = $document->user;
-        $user->notify(new DocumentStatusChanged($document));
-
         return redirect()->back()->with('success', 'Dosya Durumu Başarıyla Güncellendi');
     } catch (\Exception $e) {
         Log::error('Evrak Durumu Güncellenemedi: ', ['error' => $e->getMessage()]);
