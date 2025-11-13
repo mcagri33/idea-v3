@@ -16,15 +16,45 @@
   
   .col-idx { width: 45px; }
   .col-category { width: 180px; }
-  .col-approved { width: 65px; }
-  .col-rejected { width: 75px; }
-  .col-pending { width: 75px; }
+  .col-approved { width: 80px; }
+  .col-rejected { width: 100px; }
+  .col-pending { width: 90px; }
   .col-status { width: 160px; }
   .col-approver { width: 120px; }
   .col-download { width: 130px; }
   .col-note { width: 140px; }
   .col-auditor-note { width: 140px; }
   .col-actions { width: 130px; }
+  
+  /* Hizalama - Başlıklar */
+  th.col-idx { text-align: center; }
+  th.col-category { text-align: left; }
+  th.col-approved,
+  th.col-rejected,
+  th.col-pending {
+    text-align: center;
+  }
+  th.col-status { text-align: left; }
+  th.col-approver { text-align: left; }
+  th.col-download { text-align: left; }
+  th.col-note { text-align: left; }
+  th.col-auditor-note { text-align: left; }
+  th.col-actions { text-align: center; }
+  
+  /* Hizalama - İçerik */
+  .col-idx { text-align: center; }
+  .col-category { text-align: left; }
+  .col-approved,
+  .col-rejected,
+  .col-pending {
+    text-align: center;
+  }
+  .col-status { text-align: left; }
+  .col-approver { text-align: left; }
+  .col-download { text-align: left; }
+  .col-note { text-align: left; }
+  .col-auditor-note { text-align: left; }
+  .col-actions { text-align: center; }
   
   .col-category {
     word-wrap: break-word;
@@ -34,6 +64,22 @@
   .col-actions .d-flex {
     flex-wrap: wrap;
     gap: 0.25rem;
+    justify-content: center;
+  }
+  
+  /* Tablo genel hizalama */
+  table thead th {
+    vertical-align: middle;
+  }
+  
+  table tbody td {
+    vertical-align: middle;
+  }
+  
+  /* Not sütunları için üstten hizalama (çok satırlı metinler için) */
+  .col-note,
+  .col-auditor-note {
+    vertical-align: top;
   }
   
   .auditor-note-text {
