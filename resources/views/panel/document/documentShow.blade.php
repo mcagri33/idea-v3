@@ -108,6 +108,7 @@
               <th>@lang('Status')</th>
               <th class="d-none d-lg-table-cell">@lang('Note')</th>
               <th>@lang('Download')</th>
+              <th class="d-none d-md-table-cell">@lang('Downloaded_By')</th> 
               <th class="d-none d-md-table-cell">@lang('Created_At')</th>
               <th>@lang('Delete')</th>
             </tr>
@@ -171,6 +172,18 @@
                     @lang('Download')
                   </a>
                 </td>
+
+                <td class="d-none d-md-table-cell nowrap">
+        @if($document->lastDownloadLog && $document->lastDownloadLog->performedBy)
+          <span class="text-muted small">
+            {{ $document->lastDownloadLog->performedBy->name }}
+            <br>
+            <small>{{ $document->lastDownloadLog->created_at->format('d/m/Y H:i') }}</small>
+          </span>
+        @else
+          <span class="text-muted">-</span>
+        @endif
+      </td>
 
                 {{-- TARİH --}}
                 <td class="d-none d-md-table-cell nowrap">

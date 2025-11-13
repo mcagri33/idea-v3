@@ -221,5 +221,5 @@ class SendDocumentReminders extends Command
             'error' => $e->getMessage(),
         ]);
     }
-}
+    }
 }
