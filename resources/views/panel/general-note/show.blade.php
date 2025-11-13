@@ -4,21 +4,32 @@
 
 @section('content')
 <style>
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
   .table-fixed { 
     table-layout: fixed; 
     width: 100%;
   }
-  .col-idx { width: 40px; }
-  .col-category { width: 150px; }
-  .col-status { width: 180px; }
+  
+  .col-idx { width: 50px; }
+  .col-category { width: 200px; }
   .col-approved { width: 70px; }
-  .col-approver { width: 130px; }
   .col-rejected { width: 80px; }
   .col-pending { width: 80px; }
+  .col-status { width: 180px; }
+  .col-approver { width: 130px; }
   .col-download { width: 140px; }
-  .col-note { width: 200px; min-width: 150px; }
-  .col-auditor-note { width: 200px; min-width: 150px; }
-  .col-actions { width: 150px; }
+  .col-note { width: 200px; }
+  .col-auditor-note { width: 200px; }
+  .col-actions { width: 140px; }
+  
+  .col-category {
+    word-wrap: break-word;
+    word-break: break-word;
+  }
   
   .col-actions .d-flex {
     flex-wrap: wrap;
@@ -27,21 +38,23 @@
   
   .auditor-note-text {
     display: block;
-    max-width: 200px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    max-width: 100%;
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
+    line-height: 1.4;
   }
   
   .auditor-note-input {
-    max-width: 200px;
+    max-width: 100%;
+    font-size: 0.875rem;
   }
   
   .text-truncate { 
     max-width: 100%;
-    overflow: hidden; 
-    text-overflow: ellipsis; 
-    white-space: nowrap;
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
   }
   
   .nowrap { 
@@ -50,26 +63,53 @@
   
   .note-text {
     display: block;
-    max-width: 200px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    max-width: 100%;
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
+    line-height: 1.4;
   }
   
   .note-input {
-    max-width: 200px;
+    max-width: 100%;
+    font-size: 0.875rem;
+  }
+  
+  .col-note,
+  .col-auditor-note {
+    vertical-align: top;
+  }
+  
+  @media (max-width: 1400px) {
+    .col-category { width: 180px; }
+    .col-note { width: 180px; }
+    .col-auditor-note { width: 180px; }
   }
   
   @media (max-width: 1200px) {
+    .col-category { width: 160px; }
     .col-download { width: 120px; }
     .col-approver { width: 110px; }
+    .col-status { width: 160px; }
+    .col-note { width: 150px; }
+    .col-auditor-note { width: 150px; }
   }
   
   @media (max-width: 992px) {
     .table-responsive {
       font-size: 0.875rem;
     }
-    .col-note { width: 150px; }
+    .col-category { width: 140px; }
+    .col-note { width: 130px; }
+    .col-auditor-note { width: 130px; }
+    .col-actions { width: 120px; }
+  }
+  
+  @media (max-width: 768px) {
+    .col-category { width: 120px; }
+    .col-status { width: 140px; }
+    .col-note { width: 110px; }
+    .col-auditor-note { width: 110px; }
   }
 </style>
 
@@ -134,7 +174,7 @@
   @endphp
   <tr>
             <td class="col-idx nowrap">{{ $loop->iteration }}</td> 
-            <td class="col-category text-truncate" title="{{ $category->name }}">{{ $category->name }}</td>
+            <td class="col-category">{{ $category->name }}</td>
             <td class="col-approved"><span class="badge bg-label-success">{{ $category->approved_count }}</span></td>
             <td class="col-rejected"><span class="badge bg-label-danger">{{ $category->rejected_count }}</span></td>
             <td class="col-pending"><span class="badge bg-label-warning">{{ $category->pending_count }}</span></td>
