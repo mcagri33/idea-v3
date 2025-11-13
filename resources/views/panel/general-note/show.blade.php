@@ -229,9 +229,11 @@
             {{-- Durum --}}
             <td class="col-status">
               @php
-                $totalCount = $category->approved_count + $category->rejected_count + $category->pending_count;
+                $totalCount = $category->approved_count + $category->rejected_count + $category->pending_count + ($category->no_document_count ?? 0);
               @endphp
-              @if($totalCount > 0)
+              @if(($category->no_document_count ?? 0) > 0)
+                <span class="badge bg-label-info">Uygulanamaz</span>
+              @elseif($totalCount > 0)
                 @if($category->approved_count > 0)
                   <span class="badge bg-label-success">Yüklenmiş ve Onaylanmış</span>
                 @elseif($category->pending_count > 0)

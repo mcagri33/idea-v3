@@ -182,6 +182,16 @@
                     <textarea name="description" class="form-control" placeholder="Açıklama" required></textarea>
                   </div>
 
+                  <div class="form-group mt-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="no_document" id="no_document_{{ $year }}" value="1">
+                      <label class="form-check-label" for="no_document_{{ $year }}">
+                        Bu kategori için belgemiz yok
+                      </label>
+                    </div>
+                    <small class="form-text text-muted">Eğer bu kategori için belgeniz yoksa lütfen bu seçeneği işaretleyin.</small>
+                  </div>
+
                   <button class="btn btn-primary mt-3" type="submit">Yükle</button>
                 </form>
               </div>
@@ -224,6 +234,8 @@
                   <span class="badge bg-success">Onaylandı</span>
                 @elseif ($document->status == 0)
                   <span class="badge bg-danger">Reddedildi</span>
+                @elseif ($document->status == 3)
+                  <span class="badge bg-info">Belge Yok</span>
                 @endif
               </td>
 

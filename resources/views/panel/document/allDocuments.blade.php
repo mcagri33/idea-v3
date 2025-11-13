@@ -126,6 +126,7 @@
                       <option value="2" @selected($document->status==2)>@lang('Pending')</option>
                       <option value="1" @selected($document->status==1)>@lang('Approved')</option>
                       <option value="0" @selected($document->status==0)>@lang('Rejected')</option>
+                      <option value="3" @selected($document->status==3)>Belge Yok</option>
                     </select>
                   </form>
                 </td>
@@ -142,9 +143,13 @@
 
                 {{-- Download --}}
                 <td class="nowrap">
-                  <a href="{{ route('document.download', $document->uuid) }}" class="btn btn-success btn-sm" target="_blank">
-                    @lang('Download')
-                  </a>
+                  @if($document->status == 3)
+                    <span class="text-muted small">-</span>
+                  @else
+                    <a href="{{ route('document.download', $document->uuid) }}" class="btn btn-success btn-sm" target="_blank">
+                      @lang('Download')
+                    </a>
+                  @endif
                 </td>
 
                 {{-- Downloaded By --}}

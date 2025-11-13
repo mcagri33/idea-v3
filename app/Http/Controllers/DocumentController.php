@@ -57,7 +57,44 @@ class DocumentController extends Controller
     $fileYear = $request->input('file_year');
     $documentName = $request->input('document_name');
     $description = $request->input('description');
+    $noDocument = $request->has('no_document') && $request->input('no_document') == '1';
 
+    // Eğer "Belge Yok" seçeneği işaretliyse
+    if ($noDocument) {
+      $document = Document::create([
+        'user_id' => Auth::id(),
+        'category_id' => $category->id,
+        'file_path' => null,
+        'file_year' => $fileYear,
+        'uuid' => Str::uuid(),
+        'document_name' => $documentName ?: 'Belge Yok',
+        'description' => $description ?: 'Bu kategori için belge bulunmamaktadır.',
+        'status' => 3, // Belge Yok
+        'rejection_note' => null,
+      ]);
+
+      // Eğer görev ID'si varsa bu belge göreve bağlanır
+      if ($request->filled('assignment_id')) {
+          \App\Models\DocumentAssignment::where('id', $request->assignment_id)
+              ->where('user_id', $user->id)
+              ->update([
+                  'document_id' => $document->id,
+                  'status' => 'uploaded'
+              ]);
+      }
+
+      $this->logActivity(
+        'Eklendi',
+        $category->name,
+        "{$user->company} firması {$category->name} evrakı için 'Belge Yok' bildirimi yaptı.",
+        $user->company,
+        now()
+      );
+
+      return redirect()->back()->with('success', 'Belge Yok bildirimi başarıyla kaydedildi.');
+    }
+
+    // Normal dosya yükleme
     if ($request->has('images') && !empty($request->input('images'))) {
       $files = $request->input('images');
       foreach ($files as $file) {
@@ -831,6 +868,7 @@ public function generalNoteShow(Request $request, User $user)
         'documents as approved_count' => fn($q) => $q->where('status', 1)->where('file_year', $year)->where('user_id', $user->id),
         'documents as rejected_count' => fn($q) => $q->where('status', 0)->where('file_year', $year)->where('user_id', $user->id),
         'documents as pending_count' => fn($q) => $q->where('status', 2)->where('file_year', $year)->where('user_id', $user->id),
+        'documents as no_document_count' => fn($q) => $q->where('status', 3)->where('file_year', $year)->where('user_id', $user->id),
     ])
     ->orderBy('order')
     ->get();
@@ -900,6 +938,7 @@ public function exportGeneralNotePdf(Request $request, User $user)
         'documents as approved_count' => fn($q) => $q->where('status', 1)->where('file_year', $year)->where('user_id', $user->id),
         'documents as rejected_count' => fn($q) => $q->where('status', 0)->where('file_year', $year)->where('user_id', $user->id),
         'documents as pending_count' => fn($q) => $q->where('status', 2)->where('file_year', $year)->where('user_id', $user->id),
+        'documents as no_document_count' => fn($q) => $q->where('status', 3)->where('file_year', $year)->where('user_id', $user->id),
     ])
     ->orderBy('order')
     ->get();

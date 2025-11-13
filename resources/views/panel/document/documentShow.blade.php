@@ -33,6 +33,11 @@
     color: #664d03;             /* bs-warning */
     border-color: #ffecb5;
   }
+  .form-select.status-3 { /* No Document */
+    background-color: #cfe2ff;  /* bs-info-subtle */
+    color: #084298;             /* bs-info */
+    border-color: #b6d4fe;
+  }
 </style>
 
 <div class="container">
@@ -150,6 +155,7 @@
                       <option value="2" {{ $document->status == 2 ? 'selected' : '' }}>@lang('Pending')</option>
                       <option value="1" {{ $document->status == 1 ? 'selected' : '' }}>@lang('Approved')</option>
                       <option value="0" {{ $document->status == 0 ? 'selected' : '' }}>@lang('Rejected')</option>
+                      <option value="3" {{ $document->status == 3 ? 'selected' : '' }}>Belge Yok</option>
                     </select>
                   </form>
                 </td>
@@ -168,9 +174,13 @@
 
                 {{-- İNDİR --}}
                 <td class="nowrap">
-                  <a href="{{ route('document.download', $document->uuid) }}" class="btn btn-success btn-sm" target="_blank">
-                    @lang('Download')
-                  </a>
+                  @if($document->status == 3)
+                    <span class="text-muted small">-</span>
+                  @else
+                    <a href="{{ route('document.download', $document->uuid) }}" class="btn btn-success btn-sm" target="_blank">
+                      @lang('Download')
+                    </a>
+                  @endif
                 </td>
 
                 <td class="d-none d-md-table-cell nowrap">

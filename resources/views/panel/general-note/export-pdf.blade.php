@@ -83,11 +83,13 @@
         @foreach($categories as $category)
           @php
             $adminNote = $adminNotes[$category->id]['note'] ?? null;
-            $totalCount = $category->approved_count + $category->rejected_count + $category->pending_count;
+            $totalCount = $category->approved_count + $category->rejected_count + $category->pending_count + ($category->no_document_count ?? 0);
             
             // Durum belirleme
             $statusText = '';
-            if($totalCount > 0) {
+            if(($category->no_document_count ?? 0) > 0) {
+                $statusText = 'Uygulanamaz';
+            } elseif($totalCount > 0) {
                 if($category->approved_count > 0) {
                     $statusText = 'Yüklenmiş ve Onaylanmış';
                 } elseif($category->pending_count > 0) {
