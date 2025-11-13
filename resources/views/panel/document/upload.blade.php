@@ -103,6 +103,29 @@
       initializeDropzone('#tab{{ date('Y') }} #document-dropzone');
     });
 
+    // Checkbox işaretlendiğinde required alanları kaldır
+    function toggleRequiredFields(year) {
+      const checkbox = document.getElementById('no_document_' + year);
+      const documentName = document.getElementById('document_name_' + year);
+      const description = document.getElementById('description_' + year);
+      
+      if (checkbox && checkbox.checked) {
+        if (documentName) {
+          documentName.removeAttribute('required');
+        }
+        if (description) {
+          description.removeAttribute('required');
+        }
+      } else {
+        if (documentName) {
+          documentName.setAttribute('required', 'required');
+        }
+        if (description) {
+          description.setAttribute('required', 'required');
+        }
+      }
+    }
+
   </script>
 @endsection
 
@@ -174,17 +197,17 @@
                     </div>
                   </div>
                   <div class="form-group mt-3">
-                    <label for="document_name">Dosya Adı:</label>
-                    <input type="text" name="document_name" class="form-control" placeholder="Dosya Adı" required>
+                    <label for="document_name_{{ $year }}">Dosya Adı:</label>
+                    <input type="text" name="document_name" id="document_name_{{ $year }}" class="form-control" placeholder="Dosya Adı" required>
                   </div>
                   <div class="form-group mt-3">
-                    <label for="description">Açıklama:</label>
-                    <textarea name="description" class="form-control" placeholder="Açıklama" required></textarea>
+                    <label for="description_{{ $year }}">Açıklama:</label>
+                    <textarea name="description" id="description_{{ $year }}" class="form-control" placeholder="Açıklama" required></textarea>
                   </div>
 
                   <div class="form-group mt-3">
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="no_document" id="no_document_{{ $year }}" value="1">
+                      <input class="form-check-input" type="checkbox" name="no_document" id="no_document_{{ $year }}" value="1" onchange="toggleRequiredFields({{ $year }})">
                       <label class="form-check-label" for="no_document_{{ $year }}">
                         Bu kategori için belgemiz yok
                       </label>
