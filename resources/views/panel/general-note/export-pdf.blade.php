@@ -39,6 +39,9 @@
             background-color: #f2f2f2;
             font-weight: bold;
         }
+        th.text-center, td.text-center {
+            text-align: center;
+        }
         .note {
             font-style: italic;
             color: #666;
@@ -69,9 +72,9 @@
         <thead>
             <tr>
                 <th>Kategori</th>
-                <th>Onaylı</th>
-                <th>Reddedilen</th>
-                <th>Bekleyen</th>
+                <th class="text-center">Onaylı</th>
+                <th class="text-center">Reddedilen</th>
+                <th class="text-center">Bekleyen</th>
                 <th>Açıklama</th>
             </tr>
         </thead>
@@ -82,9 +85,9 @@
           @endphp
           <tr>
             <td><strong>{{ $category->name }}</strong></td>
-            <td>{{ $category->approved_count }}</td>
-            <td>{{ $category->rejected_count }}</td>
-            <td>{{ $category->pending_count }}</td>
+            <td class="text-center">{{ $category->approved_count }}</td>
+            <td class="text-center">{{ $category->rejected_count }}</td>
+            <td class="text-center">{{ $category->pending_count }}</td>
             <td class="note">{{ $adminNote ? strip_tags($adminNote) : '-' }}</td>
           </tr>
         @endforeach
