@@ -46,8 +46,10 @@
             <th>#</th>  
             <th>Kategori</th>
             <th>Onaylı</th>
+            <th>Onaylayan</th>
             <th>Reddedilen</th>
             <th>Bekleyen</th>
+            <th>İndirme Durumu</th>
             <th>Açıklama</th>
             <th>İşlemler</th>
           </tr>
@@ -62,8 +64,36 @@
             <td>{{ $loop->iteration }}</td> 
             <td>{{ $category->name }}</td>
             <td><span class="badge bg-label-success">{{ $category->approved_count }}</span></td>
+            {{-- Onaylayan --}}
+            <td>
+              @if($category->approved_count > 0 && $category->has_approved && $category->approve_log && $category->approve_log->performedBy)
+                <span class="text-muted small">
+                  {{ $category->approve_log->performedBy->name }}
+                  <br>
+                  <small>{{ $category->approve_log->created_at->format('d/m/Y H:i') }}</small>
+                </span>
+              @elseif($category->approved_count > 0)
+                <span class="text-muted">-</span>
+              @else
+                <span class="text-muted">-</span>
+              @endif
+            </td>
             <td><span class="badge bg-label-danger">{{ $category->rejected_count }}</span></td>
             <td><span class="badge bg-label-warning">{{ $category->pending_count }}</span></td>
+            {{-- İndirme Durumu --}}
+            <td>
+              @if($category->has_download && $category->last_download_log && $category->last_download_log->performedBy)
+                <span class="badge bg-label-success">İndirilmiş</span>
+                <br>
+                <small class="text-muted">
+                  {{ $category->last_download_log->performedBy->name }}
+                  <br>
+                  {{ $category->last_download_log->created_at->format('d/m/Y H:i') }}
+                </small>
+              @else
+                <span class="badge bg-label-secondary">İndirilmemiş</span>
+              @endif
+            </td>
             <td>
   <span id="note-text-{{ $category->id }}" class="note-text">
     {{ $adminNote ?? '-' }}

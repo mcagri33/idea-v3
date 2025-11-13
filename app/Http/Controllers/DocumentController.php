@@ -252,6 +252,7 @@ class DocumentController extends Controller
         $document = Document::where('uuid', $uuid)->firstOrFail();
         $selectedUser = $document->user;
         $newStatus = $request->status;
+        $oldStatus = $document->status;
 
         // rejection_note varsa kaydet
         if ($newStatus == 0 && $request->filled('rejection_note')) {
@@ -260,6 +261,17 @@ class DocumentController extends Controller
 
         $document->status = $newStatus;
         $document->save();
+
+        // Status değişikliğini DocumentLog'a kaydet
+        if ($oldStatus != $newStatus) {
+            $action = $newStatus == 1 ? 'approve' : ($newStatus == 0 ? 'reject' : 'pending');
+            DocumentLog::create([
+                'document_id' => $document->id,
+                'action' => $action,
+                'performed_by' => Auth::id(),
+                'note' => $newStatus == 1 ? 'Belge onaylandı' : ($newStatus == 0 ? 'Belge reddedildi' : 'Belge beklemede'),
+            ]);
+        }
 
         $statusText = $newStatus == 1 ? 'Onaylandı' : 'Reddedildi';
 
@@ -780,6 +792,53 @@ public function generalNoteShow(Request $request, User $user)
     ])
     ->orderBy('order')
     ->get();
+
+    // Her kategori için indirme durumunu kontrol et
+    foreach ($categories as $category) {
+        // Bu kategoriye ait belgelerin ID'lerini al
+        $documentIds = Document::where('category_id', $category->id)
+            ->where('user_id', $user->id)
+            ->where('file_year', $year)
+            ->pluck('id');
+
+        if ($documentIds->isNotEmpty()) {
+            // Bu belgelerden herhangi birinin indirme kaydı var mı?
+            $lastDownloadLog = DocumentLog::whereIn('document_id', $documentIds)
+                ->where('action', 'download')
+                ->with('performedBy:id,name')
+                ->latest('created_at')
+                ->first();
+
+            $category->last_download_log = $lastDownloadLog;
+            $category->has_download = $lastDownloadLog !== null;
+
+            // Onaylı belgelerden birinin onaylayan kişisini bul
+            $approvedDocumentIds = Document::where('category_id', $category->id)
+                ->where('user_id', $user->id)
+                ->where('file_year', $year)
+                ->where('status', 1) // Sadece onaylı belgeler
+                ->pluck('id');
+
+            if ($approvedDocumentIds->isNotEmpty()) {
+                $approveLog = DocumentLog::whereIn('document_id', $approvedDocumentIds)
+                    ->where('action', 'approve')
+                    ->with('performedBy:id,name')
+                    ->latest('created_at')
+                    ->first();
+
+                $category->approve_log = $approveLog;
+                $category->has_approved = $approveLog !== null;
+            } else {
+                $category->approve_log = null;
+                $category->has_approved = false;
+            }
+        } else {
+            $category->last_download_log = null;
+            $category->has_download = false;
+            $category->approve_log = null;
+            $category->has_approved = false;
+        }
+    }
 
     $note = $user->generalNotes()->where('year', $year)->first();
     
