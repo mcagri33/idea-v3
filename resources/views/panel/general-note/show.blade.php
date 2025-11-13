@@ -14,17 +14,17 @@
     width: 100%;
   }
   
-  .col-idx { width: 50px; }
-  .col-category { width: 200px; }
-  .col-approved { width: 70px; }
-  .col-rejected { width: 80px; }
-  .col-pending { width: 80px; }
-  .col-status { width: 180px; }
-  .col-approver { width: 130px; }
-  .col-download { width: 140px; }
-  .col-note { width: 200px; }
-  .col-auditor-note { width: 200px; }
-  .col-actions { width: 140px; }
+  .col-idx { width: 45px; }
+  .col-category { width: 180px; }
+  .col-approved { width: 65px; }
+  .col-rejected { width: 75px; }
+  .col-pending { width: 75px; }
+  .col-status { width: 160px; }
+  .col-approver { width: 120px; }
+  .col-download { width: 130px; }
+  .col-note { width: 140px; }
+  .col-auditor-note { width: 140px; }
+  .col-actions { width: 130px; }
   
   .col-category {
     word-wrap: break-word;
@@ -81,35 +81,37 @@
   }
   
   @media (max-width: 1400px) {
-    .col-category { width: 180px; }
-    .col-note { width: 180px; }
-    .col-auditor-note { width: 180px; }
+    .col-category { width: 160px; }
+    .col-status { width: 150px; }
+    .col-note { width: 130px; }
+    .col-auditor-note { width: 130px; }
   }
   
   @media (max-width: 1200px) {
-    .col-category { width: 160px; }
-    .col-download { width: 120px; }
+    .col-category { width: 150px; }
+    .col-download { width: 115px; }
     .col-approver { width: 110px; }
-    .col-status { width: 160px; }
-    .col-note { width: 150px; }
-    .col-auditor-note { width: 150px; }
+    .col-status { width: 140px; }
+    .col-note { width: 120px; }
+    .col-auditor-note { width: 120px; }
   }
   
   @media (max-width: 992px) {
     .table-responsive {
       font-size: 0.875rem;
     }
-    .col-category { width: 140px; }
-    .col-note { width: 130px; }
-    .col-auditor-note { width: 130px; }
-    .col-actions { width: 120px; }
+    .col-category { width: 130px; }
+    .col-status { width: 130px; }
+    .col-note { width: 110px; }
+    .col-auditor-note { width: 110px; }
+    .col-actions { width: 115px; }
   }
   
   @media (max-width: 768px) {
-    .col-category { width: 120px; }
-    .col-status { width: 140px; }
-    .col-note { width: 110px; }
-    .col-auditor-note { width: 110px; }
+    .col-category { width: 110px; }
+    .col-status { width: 120px; }
+    .col-note { width: 95px; }
+    .col-auditor-note { width: 95px; }
   }
 </style>
 
