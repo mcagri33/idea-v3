@@ -279,9 +279,13 @@
 
               <td>{{ $document->rejection_note ?? 'Yok' }}</td>
               <td>
-                <a href="{{ route('document.download', $document->uuid) }}" class="btn btn-success" target="_blank">
-                  İndir
-                </a>
+                @if($document->status == 3)
+                  <span class="text-muted">-</span>
+                @else
+                  <a href="{{ route('document.download', $document->uuid) }}" class="btn btn-success" target="_blank">
+                    İndir
+                  </a>
+                @endif
               </td>
               <td>{{ $document->created_at->format('d/m/Y') }}</td>
             </tr>
