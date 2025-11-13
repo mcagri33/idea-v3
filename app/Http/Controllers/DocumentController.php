@@ -749,12 +749,13 @@ public function saveGeneralNoteCategoryNote(Request $request, User $user)
         $notes = json_decode($content, true) ?? [];
     }
 
-    // Kategori notunu güncelle/ekle
-    $notes[$categoryId] = [
+    // Kategori notunu güncelle/ekle (mevcut auditor_note'u koru)
+    $existingData = $notes[$categoryId] ?? [];
+    $notes[$categoryId] = array_merge($existingData, [
         'category_id' => (int)$categoryId,
         'note' => $note,
         'updated_at' => now()->toDateTimeString()
-    ];
+    ]);
 
     // Dosyaya kaydet
     Storage::put($fileName, json_encode($notes, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
@@ -762,6 +763,47 @@ public function saveGeneralNoteCategoryNote(Request $request, User $user)
     return response()->json([
         'success' => true,
         'message' => 'Not kaydedildi.'
+    ]);
+}
+
+// Denetçi notunu JSON dosyasına kaydet
+public function saveAuditorNote(Request $request, User $user)
+{
+    $request->validate([
+        'category_id' => 'required|exists:document_categories,id',
+        'year' => 'required|digits:4',
+        'auditor_note' => 'nullable|string|max:1000',
+    ]);
+
+    $adminId = Auth::id();
+    $year = $request->input('year');
+    $categoryId = $request->input('category_id');
+    $auditorNote = $request->input('auditor_note');
+
+    // Dosya yolu
+    $fileName = "admin_category_notes/admin_{$adminId}/user_{$user->id}_year_{$year}.json";
+    
+    // Mevcut dosyayı oku (varsa)
+    $notes = [];
+    if (Storage::exists($fileName)) {
+        $content = Storage::get($fileName);
+        $notes = json_decode($content, true) ?? [];
+    }
+
+    // Denetçi notunu güncelle/ekle (mevcut note'u koru)
+    $existingData = $notes[$categoryId] ?? [];
+    $notes[$categoryId] = array_merge($existingData, [
+        'category_id' => (int)$categoryId,
+        'auditor_note' => $auditorNote,
+        'auditor_note_updated_at' => now()->toDateTimeString()
+    ]);
+
+    // Dosyaya kaydet
+    Storage::put($fileName, json_encode($notes, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Denetçi notu kaydedildi.'
     ]);
 }
 
@@ -838,6 +880,9 @@ public function generalNoteShow(Request $request, User $user)
             $category->approve_log = null;
             $category->has_approved = false;
         }
+
+        // Denetçi notunu JSON'dan al
+        $category->auditor_note = $adminNotes[$category->id]['auditor_note'] ?? null;
     }
 
     $note = $user->generalNotes()->where('year', $year)->first();

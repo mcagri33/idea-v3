@@ -104,6 +104,7 @@ Route::group(['prefix' => '/panel/general-note','middleware' => ['auth','role:Ad
   Route::get('{user}/export-pdf', [DocumentController::class, 'exportGeneralNotePdf'])->name('general.note.exportPdf');
   Route::post('{user}/send-mail', [DocumentController::class, 'sendGeneralNoteMail'])->name('general.note.sendMail');
   Route::post('{user}/category-note', [DocumentController::class, 'saveGeneralNoteCategoryNote'])->name('general.note.saveCategoryNote');
+  Route::post('{user}/auditor-note', [DocumentController::class, 'saveAuditorNote'])->name('general.note.saveAuditorNote');
 });
 
 

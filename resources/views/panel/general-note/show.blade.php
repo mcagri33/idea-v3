@@ -17,7 +17,25 @@
   .col-pending { width: 80px; }
   .col-download { width: 140px; }
   .col-note { width: 200px; min-width: 150px; }
-  .col-actions { width: 110px; }
+  .col-auditor-note { width: 200px; min-width: 150px; }
+  .col-actions { width: 150px; }
+  
+  .col-actions .d-flex {
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+  
+  .auditor-note-text {
+    display: block;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  .auditor-note-input {
+    max-width: 200px;
+  }
   
   .text-truncate { 
     max-width: 100%;
@@ -101,7 +119,10 @@
             <th class="col-rejected">Reddedilen</th>
             <th class="col-pending">Bekleyen</th>
             <th class="col-status">Durum</th>
+            <th class="col-approver d-none d-md-table-cell">Onaylayan</th>
+            <th class="col-download d-none d-lg-table-cell">İndirme Durumu</th>
             <th class="col-note">Açıklama</th>
+            <th class="col-auditor-note">Denetçi Notu</th>
             <th class="col-actions">İşlemler</th>
           </tr>
         </thead>
@@ -134,6 +155,34 @@
                 <span class="badge bg-label-secondary">Yüklenmemiş</span>
               @endif
             </td>
+            {{-- Onaylayan --}}
+            <td class="col-approver d-none d-md-table-cell nowrap">
+              @if($category->approved_count > 0 && $category->has_approved && $category->approve_log && $category->approve_log->performedBy)
+                <span class="text-muted small">
+                  {{ $category->approve_log->performedBy->name }}
+                  <br>
+                  <small>{{ $category->approve_log->created_at->format('d/m/Y H:i') }}</small>
+                </span>
+              @elseif($category->approved_count > 0)
+                <span class="text-muted">-</span>
+              @else
+                <span class="text-muted">-</span>
+              @endif
+            </td>
+            {{-- İndirme Durumu --}}
+            <td class="col-download d-none d-lg-table-cell nowrap">
+              @if($category->has_download && $category->last_download_log && $category->last_download_log->performedBy)
+                <span class="badge bg-label-success">İndirilmiş</span>
+                <br>
+                <small class="text-muted">
+                  {{ $category->last_download_log->performedBy->name }}
+                  <br>
+                  {{ $category->last_download_log->created_at->format('d/m/Y H:i') }}
+                </small>
+              @else
+                <span class="badge bg-label-secondary">İndirilmemiş</span>
+              @endif
+            </td>
             <td class="col-note">
   <span id="note-text-{{ $category->id }}" class="note-text" title="{{ $adminNote ?? '-' }}">
     {{ $adminNote ?? '-' }}
@@ -144,33 +193,74 @@
     rows="2"
   >{{ $adminNote ?? '' }}</textarea>
 </td>
+            {{-- Denetçi Notu --}}
+            <td class="col-auditor-note">
+              <span id="auditor-note-text-{{ $category->id }}" class="auditor-note-text" title="{{ $category->auditor_note ?? '-' }}">
+                {{ $category->auditor_note ?? '-' }}
+              </span>
+              <textarea 
+                id="auditor-note-input-{{ $category->id }}" 
+                class="form-control d-none auditor-note-input" 
+                rows="2"
+              >{{ $category->auditor_note ?? '' }}</textarea>
+            </td>
             <td class="col-actions nowrap">
-              <button 
-                type="button" 
-                class="btn btn-sm btn-icon btn-outline-primary edit-note-btn"
-                data-category-id="{{ $category->id }}"
-                data-user-id="{{ $user->id }}"
-                onclick="toggleNoteEdit({{ $category->id }})"
-              >
-                <i class="ti ti-edit"></i>
-              </button>
-              <button 
-                type="button" 
-                class="btn btn-sm btn-icon btn-outline-success save-note-btn d-none"
-                data-category-id="{{ $category->id }}"
-                data-user-id="{{ $user->id }}"
-                onclick="saveCategoryNote({{ $category->id }}, {{ $user->id }})"
-              >
-                <i class="ti ti-check"></i>
-              </button>
-              <button 
-                type="button" 
-                class="btn btn-sm btn-icon btn-outline-danger cancel-note-btn d-none"
-                data-category-id="{{ $category->id }}"
-                onclick="cancelNoteEdit({{ $category->id }})"
-              >
-                <i class="ti ti-x"></i>
-              </button>
+              <div class="d-flex gap-1">
+                <button 
+                  type="button" 
+                  class="btn btn-sm btn-icon btn-outline-primary edit-note-btn"
+                  data-category-id="{{ $category->id }}"
+                  data-user-id="{{ $user->id }}"
+                  onclick="toggleNoteEdit({{ $category->id }})"
+                  title="Açıklama Düzenle"
+                >
+                  <i class="ti ti-edit"></i>
+                </button>
+                <button 
+                  type="button" 
+                  class="btn btn-sm btn-icon btn-outline-success save-note-btn d-none"
+                  data-category-id="{{ $category->id }}"
+                  data-user-id="{{ $user->id }}"
+                  onclick="saveCategoryNote({{ $category->id }}, {{ $user->id }})"
+                >
+                  <i class="ti ti-check"></i>
+                </button>
+                <button 
+                  type="button" 
+                  class="btn btn-sm btn-icon btn-outline-danger cancel-note-btn d-none"
+                  data-category-id="{{ $category->id }}"
+                  onclick="cancelNoteEdit({{ $category->id }})"
+                >
+                  <i class="ti ti-x"></i>
+                </button>
+                <button 
+                  type="button" 
+                  class="btn btn-sm btn-icon btn-outline-info edit-auditor-note-btn"
+                  data-category-id="{{ $category->id }}"
+                  data-user-id="{{ $user->id }}"
+                  onclick="toggleAuditorNoteEdit({{ $category->id }})"
+                  title="Denetçi Notu Düzenle"
+                >
+                  <i class="ti ti-file-text"></i>
+                </button>
+                <button 
+                  type="button" 
+                  class="btn btn-sm btn-icon btn-outline-success save-auditor-note-btn d-none"
+                  data-category-id="{{ $category->id }}"
+                  data-user-id="{{ $user->id }}"
+                  onclick="saveAuditorNote({{ $category->id }}, {{ $user->id }})"
+                >
+                  <i class="ti ti-check"></i>
+                </button>
+                <button 
+                  type="button" 
+                  class="btn btn-sm btn-icon btn-outline-danger cancel-auditor-note-btn d-none"
+                  data-category-id="{{ $category->id }}"
+                  onclick="cancelAuditorNoteEdit({{ $category->id }})"
+                >
+                  <i class="ti ti-x"></i>
+                </button>
+              </div>
             </td>
           </tr>
         @endforeach
@@ -318,6 +408,86 @@ Lütfen eksik belgeleri tamamlayınız.
     alert('Not kaydedilirken bir hata oluştu: ' + error.message);
   }
 }
+
+  // Denetçi notu düzenleme fonksiyonları
+  function toggleAuditorNoteEdit(categoryId) {
+    const textElement = document.getElementById(`auditor-note-text-${categoryId}`);
+    const inputElement = document.getElementById(`auditor-note-input-${categoryId}`);
+    const editBtn = document.querySelector(`[data-category-id="${categoryId}"].edit-auditor-note-btn`);
+    const saveBtn = document.querySelector(`[data-category-id="${categoryId}"].save-auditor-note-btn`);
+    const cancelBtn = document.querySelector(`[data-category-id="${categoryId}"].cancel-auditor-note-btn`);
+
+    textElement.classList.add('d-none');
+    inputElement.classList.remove('d-none');
+    editBtn.classList.add('d-none');
+    saveBtn.classList.remove('d-none');
+    cancelBtn.classList.remove('d-none');
+  }
+
+  function cancelAuditorNoteEdit(categoryId) {
+    const textElement = document.getElementById(`auditor-note-text-${categoryId}`);
+    const inputElement = document.getElementById(`auditor-note-input-${categoryId}`);
+    const editBtn = document.querySelector(`[data-category-id="${categoryId}"].edit-auditor-note-btn`);
+    const saveBtn = document.querySelector(`[data-category-id="${categoryId}"].save-auditor-note-btn`);
+    const cancelBtn = document.querySelector(`[data-category-id="${categoryId}"].cancel-auditor-note-btn`);
+
+    inputElement.value = textElement.textContent.trim() === '-' ? '' : textElement.textContent.trim();
+    textElement.classList.remove('d-none');
+    inputElement.classList.add('d-none');
+    editBtn.classList.remove('d-none');
+    saveBtn.classList.add('d-none');
+    cancelBtn.classList.add('d-none');
+  }
+
+  async function saveAuditorNote(categoryId, userId) {
+    const inputElement = document.getElementById(`auditor-note-input-${categoryId}`);
+    const auditorNoteText = inputElement.value;
+    const year = {{ $year }};
+
+    try {
+      const response = await fetch('{{ route("general.note.saveAuditorNote", ["user" => $user->id, "year" => $year]) }}', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-TOKEN': '{{ csrf_token() }}',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          category_id: categoryId,
+          year: year,
+          auditor_note: auditorNoteText
+        })
+      });
+
+      const data = await response.json();
+
+      if (data.success || response.ok) {
+        const textElement = document.getElementById(`auditor-note-text-${categoryId}`);
+        textElement.textContent = auditorNoteText || '-';
+        textElement.setAttribute('title', auditorNoteText || '-');
+        cancelAuditorNoteEdit(categoryId);
+        
+        // Başarı mesajı göster
+        const toast = document.createElement('div');
+        toast.className = 'toast align-items-center text-white bg-success border-0';
+        toast.setAttribute('role', 'alert');
+        toast.innerHTML = `
+          <div class="d-flex">
+            <div class="toast-body">Denetçi notu kaydedildi.</div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+          </div>
+        `;
+        document.body.appendChild(toast);
+        const bsToast = new bootstrap.Toast(toast);
+        bsToast.show();
+      } else {
+        throw new Error(data.message || 'Kaydetme başarısız');
+      }
+    } catch (error) {
+      console.error('Hata:', error);
+      alert('Denetçi notu kaydedilirken bir hata oluştu: ' + error.message);
+    }
+  }
     
   
 </script>
