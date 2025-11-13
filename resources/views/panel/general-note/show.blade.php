@@ -3,6 +3,58 @@
 @section('title', 'Kullanıcı Notu ve Belgeleri')
 
 @section('content')
+<style>
+  .table-fixed { 
+    table-layout: fixed; 
+    width: 100%;
+  }
+  .col-idx { width: 40px; }
+  .col-category { width: 150px; }
+  .col-status { width: 180px; }
+  .col-approved { width: 70px; }
+  .col-approver { width: 130px; }
+  .col-rejected { width: 80px; }
+  .col-pending { width: 80px; }
+  .col-download { width: 140px; }
+  .col-note { width: 200px; min-width: 150px; }
+  .col-actions { width: 110px; }
+  
+  .text-truncate { 
+    max-width: 100%;
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    white-space: nowrap;
+  }
+  
+  .nowrap { 
+    white-space: nowrap; 
+  }
+  
+  .note-text {
+    display: block;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  .note-input {
+    max-width: 200px;
+  }
+  
+  @media (max-width: 1200px) {
+    .col-download { width: 120px; }
+    .col-approver { width: 110px; }
+  }
+  
+  @media (max-width: 992px) {
+    .table-responsive {
+      font-size: 0.875rem;
+    }
+    .col-note { width: 150px; }
+  }
+</style>
+
   <h4 class="fw-bold py-3 mb-4">{{ $user->name }} - {{ $year }} Yılı Belgeleri</h4>
 
   {{-- Action Buttons --}}
@@ -39,19 +91,20 @@
 
   {{-- Kategori Tablosu --}}
   <div class="card mt-4">
-    <div class="table-responsive text-nowrap">
-      <table class="table" id="categoriesTable">
+    <div class="table-responsive">
+      <table class="table table-sm table-fixed align-middle" id="categoriesTable">
         <thead>
           <tr>
-            <th>#</th>  
-            <th>Kategori</th>
-            <th>Onaylı</th>
-            <th>Onaylayan</th>
-            <th>Reddedilen</th>
-            <th>Bekleyen</th>
-            <th>İndirme Durumu</th>
-            <th>Açıklama</th>
-            <th>İşlemler</th>
+            <th class="col-idx">#</th>  
+            <th class="col-category">Kategori</th>
+            <th class="col-status">Durum</th>
+            <th class="col-approved">Onaylı</th>
+            <th class="col-approver d-none d-md-table-cell">Onaylayan</th>
+            <th class="col-rejected">Red</th>
+            <th class="col-pending">Bekle</th>
+            <th class="col-download d-none d-lg-table-cell">İndirme</th>
+            <th class="col-note">Açıklama</th>
+            <th class="col-actions">İşlemler</th>
           </tr>
         </thead>
         <tbody>
@@ -61,11 +114,28 @@
     $adminNote = $adminNotes[$category->id]['note'] ?? null;
   @endphp
   <tr>
-            <td>{{ $loop->iteration }}</td> 
-            <td>{{ $category->name }}</td>
-            <td><span class="badge bg-label-success">{{ $category->approved_count }}</span></td>
+            <td class="col-idx nowrap">{{ $loop->iteration }}</td> 
+            <td class="col-category text-truncate" title="{{ $category->name }}">{{ $category->name }}</td>
+            {{-- Durum --}}
+            <td class="col-status">
+              @php
+                $totalCount = $category->approved_count + $category->rejected_count + $category->pending_count;
+              @endphp
+              @if($totalCount > 0)
+                @if($category->approved_count > 0)
+                  <span class="badge bg-label-success">Yüklenmiş ve Onaylanmış</span>
+                @elseif($category->pending_count > 0)
+                  <span class="badge bg-label-warning">Yüklenmiş ve İncelemede</span>
+                @elseif($category->rejected_count > 0)
+                  <span class="badge bg-label-danger">Yüklenmiş ve Reddedildi</span>
+                @endif
+              @else
+                <span class="badge bg-label-secondary">Yüklenmemiş</span>
+              @endif
+            </td>
+            <td class="col-approved"><span class="badge bg-label-success">{{ $category->approved_count }}</span></td>
             {{-- Onaylayan --}}
-            <td>
+            <td class="col-approver d-none d-md-table-cell nowrap">
               @if($category->approved_count > 0 && $category->has_approved && $category->approve_log && $category->approve_log->performedBy)
                 <span class="text-muted small">
                   {{ $category->approve_log->performedBy->name }}
@@ -78,10 +148,10 @@
                 <span class="text-muted">-</span>
               @endif
             </td>
-            <td><span class="badge bg-label-danger">{{ $category->rejected_count }}</span></td>
-            <td><span class="badge bg-label-warning">{{ $category->pending_count }}</span></td>
+            <td class="col-rejected"><span class="badge bg-label-danger">{{ $category->rejected_count }}</span></td>
+            <td class="col-pending"><span class="badge bg-label-warning">{{ $category->pending_count }}</span></td>
             {{-- İndirme Durumu --}}
-            <td>
+            <td class="col-download d-none d-lg-table-cell nowrap">
               @if($category->has_download && $category->last_download_log && $category->last_download_log->performedBy)
                 <span class="badge bg-label-success">İndirilmiş</span>
                 <br>
@@ -94,8 +164,8 @@
                 <span class="badge bg-label-secondary">İndirilmemiş</span>
               @endif
             </td>
-            <td>
-  <span id="note-text-{{ $category->id }}" class="note-text">
+            <td class="col-note">
+  <span id="note-text-{{ $category->id }}" class="note-text" title="{{ $adminNote ?? '-' }}">
     {{ $adminNote ?? '-' }}
   </span>
   <textarea 
@@ -104,7 +174,7 @@
     rows="2"
   >{{ $adminNote ?? '' }}</textarea>
 </td>
-            <td>
+            <td class="col-actions nowrap">
               <button 
                 type="button" 
                 class="btn btn-sm btn-icon btn-outline-primary edit-note-btn"
