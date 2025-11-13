@@ -84,6 +84,7 @@
               <th class="col-status">@lang('Status')</th>
               <th class="d-none d-lg-table-cell">@lang('Note')</th>
               <th class="col-download">@lang('Download')</th>
+              <th class="d-none d-md-table-cell">@lang('Downloaded_By')</th>
               <th class="d-none d-md-table-cell col-created">@lang('Created_At')</th>
               <th class="col-delete">@lang('Delete')</th>
             </tr>
@@ -144,6 +145,19 @@
                   <a href="{{ route('document.download', $document->uuid) }}" class="btn btn-success btn-sm" target="_blank">
                     @lang('Download')
                   </a>
+                </td>
+
+                {{-- Downloaded By --}}
+                <td class="d-none d-md-table-cell nowrap">
+                  @if($document->lastDownloadLog && $document->lastDownloadLog->performedBy)
+                    <span class="text-muted small">
+                      {{ $document->lastDownloadLog->performedBy->name }}
+                      <br>
+                      <small>{{ $document->lastDownloadLog->created_at->format('d/m/Y H:i') }}</small>
+                    </span>
+                  @else
+                    <span class="text-muted">-</span>
+                  @endif
                 </td>
 
                 {{-- Created at --}}

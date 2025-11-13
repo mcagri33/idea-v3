@@ -43,6 +43,7 @@ class DocumentController extends Controller
   {
     $documents = $category->documents()
       ->where('user_id', Auth::id())
+      ->with('lastDownloadLog.performedBy:id,name')
       ->orderBy('created_at', 'desc')
       ->get();
 
@@ -862,7 +863,7 @@ public function sendGeneralNoteMail(Request $request, User $user)
         'document_name' => 'nullable|string|max:255',
     ]);
 
-    $q = Document::query()->with(['user:id,uuid,name','category:id,name']);
+    $q = Document::query()->with(['user:id,uuid,name','category:id,name','lastDownloadLog.performedBy:id,name']);
 
     // --- Filtreler ---
     if ($request->filled('document_name')) {
