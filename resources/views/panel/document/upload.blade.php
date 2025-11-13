@@ -103,20 +103,33 @@
       initializeDropzone('#tab{{ date('Y') }} #document-dropzone');
     });
 
-    // Checkbox işaretlendiğinde required alanları kaldır
+    // Checkbox işaretlendiğinde dosya yükleme alanını gizle/göster
     function toggleRequiredFields(year) {
       const checkbox = document.getElementById('no_document_' + year);
+      const fileUploadSection = document.getElementById('file-upload-section-' + year);
       const documentName = document.getElementById('document_name_' + year);
       const description = document.getElementById('description_' + year);
       
       if (checkbox && checkbox.checked) {
+        // Checkbox işaretliyse dosya yükleme alanını gizle
+        if (fileUploadSection) {
+          fileUploadSection.style.display = 'none';
+        }
+        // Required özelliklerini kaldır
         if (documentName) {
           documentName.removeAttribute('required');
+          documentName.value = '';
         }
         if (description) {
           description.removeAttribute('required');
+          description.value = '';
         }
       } else {
+        // Checkbox işaretsizse dosya yükleme alanını göster
+        if (fileUploadSection) {
+          fileUploadSection.style.display = 'block';
+        }
+        // Required özelliklerini ekle
         if (documentName) {
           documentName.setAttribute('required', 'required');
         }
@@ -189,22 +202,6 @@
                   <input type="hidden" name="file_year" value="{{ $year }}">
                   <input type="hidden" name="assignment_id" value="{{ request('assignment_id') }}">
 
-                  <div class="form-row">
-                    <div class="col-md-12">
-                      <div class="position-relative form-group">
-                        <div class="needsclick dropzone" id="document-dropzone"></div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group mt-3">
-                    <label for="document_name_{{ $year }}">Dosya Adı:</label>
-                    <input type="text" name="document_name" id="document_name_{{ $year }}" class="form-control" placeholder="Dosya Adı" required>
-                  </div>
-                  <div class="form-group mt-3">
-                    <label for="description_{{ $year }}">Açıklama:</label>
-                    <textarea name="description" id="description_{{ $year }}" class="form-control" placeholder="Açıklama" required></textarea>
-                  </div>
-
                   <div class="form-group mt-3">
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" name="no_document" id="no_document_{{ $year }}" value="1" onchange="toggleRequiredFields({{ $year }})">
@@ -213,6 +210,24 @@
                       </label>
                     </div>
                     <small class="form-text text-muted">Eğer bu kategori için belgeniz yoksa lütfen bu seçeneği işaretleyin.</small>
+                  </div>
+
+                  <div id="file-upload-section-{{ $year }}">
+                    <div class="form-row">
+                      <div class="col-md-12">
+                        <div class="position-relative form-group">
+                          <div class="needsclick dropzone" id="document-dropzone"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group mt-3">
+                      <label for="document_name_{{ $year }}">Dosya Adı:</label>
+                      <input type="text" name="document_name" id="document_name_{{ $year }}" class="form-control" placeholder="Dosya Adı" required>
+                    </div>
+                    <div class="form-group mt-3">
+                      <label for="description_{{ $year }}">Açıklama:</label>
+                      <textarea name="description" id="description_{{ $year }}" class="form-control" placeholder="Açıklama" required></textarea>
+                    </div>
                   </div>
 
                   <button class="btn btn-primary mt-3" type="submit">Yükle</button>
