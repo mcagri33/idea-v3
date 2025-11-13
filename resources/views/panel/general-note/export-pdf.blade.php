@@ -75,6 +75,7 @@
                 <th class="text-center">Onaylı</th>
                 <th class="text-center">Reddedilen</th>
                 <th class="text-center">Bekleyen</th>
+                <th>Durum</th>
                 <th>Açıklama</th>
             </tr>
         </thead>
@@ -82,12 +83,28 @@
         @foreach($categories as $category)
           @php
             $adminNote = $adminNotes[$category->id]['note'] ?? null;
+            $totalCount = $category->approved_count + $category->rejected_count + $category->pending_count;
+            
+            // Durum belirleme
+            $statusText = '';
+            if($totalCount > 0) {
+                if($category->approved_count > 0) {
+                    $statusText = 'Yüklenmiş ve Onaylanmış';
+                } elseif($category->pending_count > 0) {
+                    $statusText = 'Yüklenmiş ve İncelemede';
+                } elseif($category->rejected_count > 0) {
+                    $statusText = 'Yüklenmiş ve Reddedildi';
+                }
+            } else {
+                $statusText = 'Yüklenmemiş';
+            }
           @endphp
           <tr>
             <td><strong>{{ $category->name }}</strong></td>
             <td class="text-center">{{ $category->approved_count }}</td>
             <td class="text-center">{{ $category->rejected_count }}</td>
             <td class="text-center">{{ $category->pending_count }}</td>
+            <td>{{ $statusText }}</td>
             <td class="note">{{ $adminNote ? strip_tags($adminNote) : '-' }}</td>
           </tr>
         @endforeach
