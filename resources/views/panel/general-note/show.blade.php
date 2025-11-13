@@ -43,6 +43,7 @@
       <table class="table" id="categoriesTable">
         <thead>
           <tr>
+            <th>#</th>  
             <th>Kategori</th>
             <th>Onaylı</th>
             <th>Reddedilen</th>
@@ -58,7 +59,7 @@
     $adminNote = $adminNotes[$category->id]['note'] ?? null;
   @endphp
   <tr>
-      
+            <td>{{ $loop->iteration }}</td> 
             <td>{{ $category->name }}</td>
             <td><span class="badge bg-label-success">{{ $category->approved_count }}</span></td>
             <td><span class="badge bg-label-danger">{{ $category->rejected_count }}</span></td>
