@@ -97,12 +97,10 @@
           <tr>
             <th class="col-idx">#</th>  
             <th class="col-category">Kategori</th>
-            <th class="col-status">Durum</th>
             <th class="col-approved">Onaylı</th>
-            <th class="col-approver d-none d-md-table-cell">Onaylayan</th>
-            <th class="col-rejected">Red</th>
-            <th class="col-pending">Bekle</th>
-            <th class="col-download d-none d-lg-table-cell">İndirme</th>
+            <th class="col-rejected">Reddedilen</th>
+            <th class="col-pending">Bekleyen</th>
+            <th class="col-status">Durum</th>
             <th class="col-note">Açıklama</th>
             <th class="col-actions">İşlemler</th>
           </tr>
@@ -116,6 +114,9 @@
   <tr>
             <td class="col-idx nowrap">{{ $loop->iteration }}</td> 
             <td class="col-category text-truncate" title="{{ $category->name }}">{{ $category->name }}</td>
+            <td class="col-approved"><span class="badge bg-label-success">{{ $category->approved_count }}</span></td>
+            <td class="col-rejected"><span class="badge bg-label-danger">{{ $category->rejected_count }}</span></td>
+            <td class="col-pending"><span class="badge bg-label-warning">{{ $category->pending_count }}</span></td>
             {{-- Durum --}}
             <td class="col-status">
               @php
@@ -131,37 +132,6 @@
                 @endif
               @else
                 <span class="badge bg-label-secondary">Yüklenmemiş</span>
-              @endif
-            </td>
-            <td class="col-approved"><span class="badge bg-label-success">{{ $category->approved_count }}</span></td>
-            {{-- Onaylayan --}}
-            <td class="col-approver d-none d-md-table-cell nowrap">
-              @if($category->approved_count > 0 && $category->has_approved && $category->approve_log && $category->approve_log->performedBy)
-                <span class="text-muted small">
-                  {{ $category->approve_log->performedBy->name }}
-                  <br>
-                  <small>{{ $category->approve_log->created_at->format('d/m/Y H:i') }}</small>
-                </span>
-              @elseif($category->approved_count > 0)
-                <span class="text-muted">-</span>
-              @else
-                <span class="text-muted">-</span>
-              @endif
-            </td>
-            <td class="col-rejected"><span class="badge bg-label-danger">{{ $category->rejected_count }}</span></td>
-            <td class="col-pending"><span class="badge bg-label-warning">{{ $category->pending_count }}</span></td>
-            {{-- İndirme Durumu --}}
-            <td class="col-download d-none d-lg-table-cell nowrap">
-              @if($category->has_download && $category->last_download_log && $category->last_download_log->performedBy)
-                <span class="badge bg-label-success">İndirilmiş</span>
-                <br>
-                <small class="text-muted">
-                  {{ $category->last_download_log->performedBy->name }}
-                  <br>
-                  {{ $category->last_download_log->created_at->format('d/m/Y H:i') }}
-                </small>
-              @else
-                <span class="badge bg-label-secondary">İndirilmemiş</span>
               @endif
             </td>
             <td class="col-note">
